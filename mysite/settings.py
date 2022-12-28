@@ -19,6 +19,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRS = os.path.join(BASE_DIR,'templates')
+CSRF_TRUSTED_ORIGINS = ['https://cooperpalmas.org.br', 'https://django-server-production-dfd8.up.railway.app/', 'cooperpalmas.org', 'localhost']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
