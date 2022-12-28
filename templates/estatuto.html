@@ -1,0 +1,1033 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>Estatuto - Palmas</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="../templates/assets/css/style.css" rel="stylesheet">
+  
+  </head>
+<style>
+
+    .story-intro .content h3 {
+      font-weight: 600;
+      font-size: 26px;
+    }
+    
+    .story-intro .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .story-intro .content ul li {
+      padding-bottom: 10px;
+    }
+    
+    .story-intro .content ul i {
+      font-size: 20px;
+      padding-right: 4px;
+      color: #006fbe;
+    }
+    
+    .story-intro .content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    
+    
+    .featured-members .content+.content {
+      margin-top: 100px;
+    }
+    
+    .featured-members .content h3 {
+      font-weight: 600;
+      font-size: 26px;
+    }
+    
+    .featured-members .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .featured-members .content ul li {
+      padding-bottom: 10px;
+    }
+    
+    .featured-members .content ul i {
+      font-size: 20px;
+      padding-right: 4px;
+      color: #006fbe;
+    }
+    
+    .featured-members .content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /*--------------------------------------------------------------
+    # Members Cards
+    --------------------------------------------------------------*/
+    .containerMember {
+      margin-top: 100px;
+    }
+    
+    .containerMember .row .col-lg-4 {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .card {
+      position: relative;
+      padding: 0;
+      margin: 0 !important;
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 280px;
+      max-height: 340px;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    
+    }
+    
+    .card .card-image {
+      width: 100%;
+      max-height: 340px;
+    }
+    
+    .card .card-image img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: cover;
+    }
+    
+    .card .card-content {
+      position: absolute;
+      bottom: -180px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      min-height: 140px;
+      width: 100%;
+      transition: bottom .4s ease-in;
+      box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .card:hover .card-content {
+      bottom: 0px;
+    }
+    
+    .card:hover .card-content h5,
+    .card:hover .card-content h5 {
+      transform: translateY(10px);
+      opacity: 1;
+    }
+    
+    .card .card-content h5,
+    .card .card-content h5 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-align: center;
+      transition: 0.8s;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-40px);
+      transition-delay: 0.2s;
+    }
+    
+    .card .card-content h5 {
+      transition: 0.5s;
+      font-weight: 200;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+    }
+    
+    .card .card-content .social-icons {
+      list-style: none;
+      padding: 0;
+    }
+    
+    
+    .card .card-content .social-icons li {
+      margin: 10px;
+      transition: 0.5s;
+      transition-delay: calc(0.15s * var(--i));
+      transform: translateY(50px);
+    }
+    
+    
+    .card:hover .card-content .social-icons li {
+      transform: translateY(20px);
+    }
+    
+    .card .card-content .social-icons li a {
+      color: #fff;
+    }
+    
+    .card .card-content .social-icons li a span {
+      font-size: 1.3rem;
+    }
+    
+    @media(max-width: 991.5px) {
+      .container {
+          margin-top: 20px;
+      }
+    
+      .container .row .col-lg-4 {
+          margin: 20px 0px;
+      }
+    }
+    
+    /*--------------------------------------------------------------
+    # Event List
+    --------------------------------------------------------------*/
+    .event-list .card {
+      border: 0;
+      padding: 0 30px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .event-list .card-img {
+      width: calc(100% + 60px);
+      margin-left: -30px;
+      overflow: hidden;
+      z-index: 9;
+      border-radius: 0;
+    }
+    
+    .event-list .card-img img {
+      max-width: 100%;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .event-list .card-body {
+      z-index: 10;
+      background: #fff;
+      border-top: 4px solid #fff;
+      padding: 30px;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      margin-top: -60px;
+      transition: 0.3s;
+    }
+    
+    .event-list .card-title {
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #24325d;
+    }
+    
+    .event-list .card-title a {
+      color: #24325d;
+      transition: 0.3s;
+    }
+    
+    .event-list .card-text {
+      color: #5e5e5e;
+    }
+    
+    .event-list .read-more a {
+      color: #777777;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+    
+    .event-list .read-more a:hover {
+      color: #006fbe;
+    }
+    
+    .event-list .card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .event-list .card:hover .card-body {
+      border-color: #006fbe;
+    }
+    
+    .event-list .card:hover .card-body .card-title a {
+      color: #006fbe;
+    }
+    
+    /*------------------------*/
+    p {
+      color: #1d284b; 
+      font-size: 24px;
+      font-family: Poppins, sans-serif;
+    }
+    
+    </style>
+<body>
+
+  <!-- ======= Header ======= -->
+
+
+  <header class="masthead">
+    <div class="overlay">            
+    <h1 align="center" style="color: #6f8f72; font-size: 36px; font-family: Poppins, sans-serif;">
+              
+    </h1>
+    <img src="" alt="">
+   
+    </div>
+
+    <br>
+    <br>
+</header>
+
+  
+
+  <main id="main">
+
+    <header class="masthead">
+      <div class="overlay">            
+      <h1 align="center" style="color: #6f8f72; font-size: 36px; font-family: Poppins, sans-serif;">
+        ESTATUTO SOCIAL   
+      </h1>
+      <h5 align="center" style="color: #6f8f72; font-size: 36px; font-family: Poppins, sans-serif;">
+        COOPERATIVA AGROAMBIENTAL PALMAS DO LAGO OESTE (COOPERPALMAS)   
+      </h5>
+      <img src="" alt="">
+     
+      </div>
+  
+      <br>
+      <br>
+  </header>
+
+ 
+    <section id="story-intro" class="story-intro">
+      <div class="container">
+
+       
+        <h1 id="-center-strong-t-tulo-i-strong-center-"><center><strong>TÍTULO I</strong></center></h1>
+        <h3 id="-center-i-da-constitui-o-natureza-jur-dica-denomina-o-foro-prazo-de-dura-o-sede-rea-de-a-o-e-exerc-cio-social-i-center-"><center><i>DA CONSTITUIÇÃO, NATUREZA JURÍDICA, DENOMINAÇÃO, FORO, PRAZO DE DURAÇÃO, SEDE, ÁREA DE AÇÃO E EXERCÍCIO SOCIAL</i></center></h3>
+        <p><strong>Art. 1º.</strong> A Cooperativa Agroambiental Palmas do Lago Oeste (CooperPalmas), constituída em assembleia geral de constituição em 21 de outubro de 2018, sob a forma de sociedade cooperativa de responsabilidade limitada de pessoas, de natureza simples e sem fins lucrativos, rege-se pelas disposições legais vigentes, pela Lei nº 5.764 de 16 de dezembro de 1971 e pelo presente Estatuto Social.
+        <strong>I.</strong>    A CooperPalmas tem sede e administração no Núcleo Rural Lago Oeste, Rua 19, Chácara 792, Salão de Múltiplas Funções, Sobradinho (DF), CEP 73.100-570.</p>
+        <p><strong>II.</strong>    O foro da cooperativa é o de Sobradinho (DF) e será preferencialmente adotada a mediação para solução de controvérsias;</p>
+        <p><strong>III</strong>.    O prazo de duração da cooperativa é indeterminado e seu exercício social coincidirá com o ano civil;</p>
+        <p><strong>IV</strong>.    A área de atuação e admissão de cooperados se limita ao Distrito Federal.</p>
+        <h1 id="-center-strong-titulo-ii-strong-center-"><center><strong>TITULO II</strong></center></h1>
+        <h3 id="-center-i-do-objeto-social-i-center-"><center><i>DO OBJETO SOCIAL</i></center></h3>
+        <p><strong>Art. 2º</strong>. O objeto social da CooperPalmas é a atuação cooperativa no segmento agroambiental, que será alcançado por meio da ação de seus cooperados, com base nos seguintes princípios:</p>
+        <p><strong>I.</strong>    Respeito ao humano, com base nas seguintes atitudes:</p>
+        <p><strong><em>a)</em></strong>    cooperação, convivência, hospitalidade e sinergia;</p>
+        <p><strong><em>b)</em></strong>    não discriminação política, religiosa, racial, social e de orientação sexual;</p>
+        <p><strong><em>c)</em></strong>    política de igualdade de gênero;</p>
+        <p><strong><em>d)</em></strong>    promoção do bem-estar dos cooperados.</p>
+        <p><strong>II.</strong>    Respeito ao ambiente e a todas as formas de vida;</p>
+        <p><strong>III.</strong>    Excelência e qualidade em todas as atividades.</p>
+        <p><strong>Art. 3º.</strong> Com o propósito de implementar o objeto social e de atender aos interesses econômicos de seus cooperados, a CooperPalmas deverá:</p>
+        <p><strong>I.</strong>    promover a recomposição do cerrado e de todo tipo de cobertura vegetal compatível, conforme planejamento produtivo técnica e ambientalmente viável, nas áreas de reserva ambiental, correspondente a, no mínimo 20% do espaço territorial da cooperativa, na forma do Código Florestal Brasileiro;</p>
+        <p><strong>II.</strong>    preservar as áreas de cerrado remanescentes no local;</p>
+        <p><strong>III.</strong>    recuperar e proteger nascentes e áreas úmidas potenciais e existentes, ou gerar formações lacustres, mesmo que artificiais, propiciando a disponibilização e usufruto do recurso hídrico e de espaços de laser para todos cooperados;</p>
+        <p><strong>IV.</strong>    promover a produção e a comercialização de produtos de base agroecológica tanto nas áreas comuns quanto nos módulos destinados aos cooperados;</p>
+        <p><strong>V.</strong>    atrair, canalizar e intermediar a produção de base agroecológica e ambiental da microrregião, inserindo-a em circuitos de comercialização externos privados e institucionais;</p>
+        <p><strong>VI.</strong>    processar e armazenar produtos de base agroecológica e ambiental de cooperados e de terceiros;</p>
+        <p><strong>VII.</strong>    administrar o espaço territorial da cooperativa, mantendo estrutura de recursos humanos e materiais, zelando pela segurança, abastecimento e uso racional de água, limpeza das áreas comuns, fiscalização das áreas privadas e conservação das vias de acesso;</p>
+        <p><strong>VIII.</strong>    normatizar e supervisionar as edificações na área da cooperativa, observando as disposições legais vigentes;</p>
+        <p><strong>IX.</strong>    desenvolver projetos ambientais, como reciclagem de lixo e compostagem de orgânicos; captação e conservação de recursos pluviométricos; promoção de reuso de água; autogeração fotovoltaica e eólica de energia elétrica; irrigação responsável, entre outros, que sejam de interesse comum da cooperativa;</p>
+        <p><strong>X.</strong>    oferecer capacitação e treinamento para cooperados, prestadores de serviços e outros produtores rurais da região, por meio de parcerias com órgãos governamentais, entes do Sistema S (Sesc, Senai e Senac), Sistema OCB (Organização das Cooperativas Brasileiras e Sescoop (Serviço Nacional de Aprendizagem do Cooperativismo); e organizações da sociedade civil nas áreas temáticas de educação e de gestão empreendedora;</p>
+        <p><strong>XI.</strong>    difundir os valores e princípios cooperativistas tanto interna corporis quanto para o entorno da CooperPalmas;</p>
+        <p><strong>XII.</strong>    fomentar parcerias e intercâmbios com associações de produtores rurais, coletivos agroflorestais e outras cooperativas com atuação na região;</p>
+        <p><strong>XIII</strong>.    respeitar os limites de atuação na região que se caracteriza como área de preservação ambiental (APA);</p>
+        <p><strong>XIV.</strong>    manter o clima de tranquilidade e bucolismo na área da cooperativa, promovendo a qualidade de vida dos cooperados;</p>
+        <p><strong>XV.</strong>    preservar, por todos os meios, a segurança no espaço da cooperativa;</p>
+        <p><strong>XVI.</strong>    promover e apoiar todas as iniciativas e atividades de caráter econômico dos cooperados em suas áreas privadas, desde que compatíveis com o objeto social da cooperativa, o Regimento Interno e a legislação vigente;</p>
+        <p><strong>XVII.</strong>    promover a divulgação das atividades e realizações da cooperativa e de seus cooperados, relacionadas com as finalidades e objetivos da CooperPalmas, perante a sociedade, autoridades competentes e demais organizações congêneres.</p>
+        <p><strong>Art. 4º.</strong> No cumprimento das suas finalidades, a CooperPalmas se propõe a:</p>
+        <p><strong>I.</strong>    garantir a recomposição da área de reserva legal de, no mínimo, 27,6 ha, preferencialmente mediante o plantio intercalado de espécies nativas com exóticas ou frutíferas, em sistema agroflorestal, conforme disposto no Código Florestal Brasileiro, visando a usufruto dos cooperados;</p>
+        <p><strong>II.</strong>    incentivar projetos agroambientais e ecológicos nas áreas de uso comum da cooperativa que superem a área destinada a reserva legal;</p>
+        <p><strong>III.</strong>    receber, transportar, classificar, padronizar, armazenar, beneficiar e industrializar a produção dos cooperados e de produtores externos da microrregião, registrando suas marcas, se for o caso;</p>
+        <p><strong>IV.</strong>    adquirir e repassar aos cooperados bens de produção e insumos necessários ao desenvolvimento das atividades;</p>
+        <p><strong>V.</strong>    prestar assistência tecnológica ao quadro social, em estreita colaboração com órgãos competentes que atuam no setor;</p>
+        <p><strong>VI.</strong>    obter recursos para financiamento de custeio de plantios e do embelezamento das áreas comuns, além de outros investimentos dos cooperados;</p>
+        <p><strong>VII.</strong>    promover, com recursos próprios ou por meio de convênios, a capacitação cooperativista e profissional do quadro social, funcional, técnico, executivo e diretivo da cooperativa;</p>
+        <p><strong>VIII.</strong>    prestar outros serviços relacionados com a atividade econômica da CooperPalmas
+        e de seus cooperados.</p>
+        <h1 id="-center-strong-t-tulo-iii-strong-center-"><center><strong>TÍTULO III</strong></center></h1>
+        <h3 id="-center-dos-cooperados-center-"><center>DOS COOPERADOS</center></h3>
+        <h1 id="-center-strong-cap-tulo-i-strong-center-"><center><strong>CAPÍTULO I</strong></center></h1>
+        <h3 id="-center-i-das-condi-es-de-admiss-o-i-center-"><center><i>DAS CONDIÇÕES DE ADMISSÃO<i/><center></h3>
+        <p><strong>Art. 5º</strong>. Podem associar-se à CooperPalmas pessoas físicas que se dediquem a operar de acordo com o objeto social da cooperativa por conta própria, concordando com os termos do presente estatuto e adquirindo o número mínimo de 15.000 quotas-partes.</p>
+        <p><strong>§ 1º</strong>  Não podem associar-se à CooperPalmas:</p>
+        <p><strong>I.</strong>    pessoas que pretendam concorrer no mesmo campo econômico da cooperativa;</p>
+        <p><strong>II.</strong>    pessoas que exerçam atividade que contrariem os objetivos da cooperativa ou que com eles colidam;</p>
+        <p><strong>III.</strong>    ex-cooperados desligados da cooperativa por eliminação, salvo se houver aprovação pela Assembleia Geral.</p>
+        <blockquote>
+        <p><strong>§ 2º</strong>  O número mínimo de cooperados é de 20 pessoas físicas.</p>
+        <p><strong>§ 3º</strong> Os cooperados da Cooperativa Habitacional dos Jornalistas – COHAJ/Seccional Lago Oeste recebem automaticamente a condição de cooperados da CooperPalmas, devendo formalizar sua documentação, nos termos dos art. 6º e 7º, no prazo de 120(cento e vinte dias), contado da assembleia de constituição da cooperativa.</p>
+        </blockquote>
+        <p><strong>Art. 6º.</strong> O interessado em tornar-se cooperado terá a sua admissão formalizada pelo Conselho de Administração, devendo:</p>
+        <p><strong>I.*</strong>    subscrever e integralizar as quotas-partes na forma prevista neste Estatuto;</p>
+        <p><strong>II.</strong>    conhecer o Estatuto Social e o Regimento Interno da cooperativa, mediante leitura dirigida;</p>
+        <p><strong>III.</strong>    assumir responsabilidade efetiva por seus deveres perante à cooperativa;</p>
+        <p><strong>IV.</strong>    obter o conjunto de informações sobre os projetos e ações da cooperativa.</p>
+        <p><strong>Art. 7º</strong>. Caberá, ainda, ao cooperado preencher e assinar:</p>
+        <p><strong>I.</strong>    ficha de matrícula;</p>
+        <p><strong>II.</strong>    ficha cadastral e censitária;</p>
+        <p><strong>III.</strong>    ato Cooperativo, com termo de responsabilidade;</p>
+        <p><strong>IV.</strong>    declaração de conhecimento do Estatuto Social e do Regimento Interno.</p>
+        <h1 id="-center-strong-cap-tulo-ii-strong-center-"><center><strong>CAPÍTULO II </strong></center></h1>
+        <h3 id="-center-i-dos-direitos-i-center-"><center><i>DOS DIREITOS</i></center></h3>
+        <p><strong>Art. 8º.</strong> São direitos do cooperado:</p>
+        <p><strong>I.</strong>    participar das assembleias gerais, discutir e votar os assuntos que nelas forem tratados, ressalvadas as disposições legais ou estatutárias em contrário;</p>
+        <p><strong>II.</strong>    propor nas assembleias gerais medidas que julgar convenientes aos interesses socais e econômicos da cooperativa;</p>
+        <p><strong>III.</strong>    votar e ser votado para os cargos sociais, desde que atendidas as disposições legais deste estatuto;</p>
+        <p><strong>IV.</strong>    beneficiar-se dos resultados das operações da cooperativa, observadas as regras deste estatuto e os instrumentos de regulação;</p>
+        <p><strong>V.</strong>    ser informado tempestivamente sobre todos os atos de gestão ou de interesse dos cooperados, por todos os meios de comunicação previstos neste estatuto;</p>
+        <p><strong>VI.</strong>    obter mediante solicitação feita, a qualquer momento, para exame na sede da CooperPalmas, informações atinentes às demonstrações financeiras, atas das assembleias gerais, das reuniões dos conselhos e da diretoria executiva, bem como relatórios resultantes de auditorias externas;</p>
+        <p><strong>VII.</strong>    ter acesso ao estatuto social da cooperativa em meio eletrônico;</p>
+        <p><strong>VIII</strong>.    tomar conhecimento dos normativos internos da cooperativa;</p>
+        <p><strong>IX.</strong>    participar e praticar as atividades que constituem o objeto social da cooperativa;</p>
+        <p><strong>X.</strong>    retirar capital, juros e sobras, nos termos deste estatuto, observadas as regras estatutárias;</p>
+        <p><strong>XI.</strong>    demitir-se da cooperativa quando lhe convier, recebendo o valor das quotas- partes em quinze prestações mensais consecutivas, na forma definida no Regimento interno e de acordo com decisão da Assembleia geral;</p>
+        <p><strong>XII.</strong>    ter posse e domínio de, pelo menos, um lote de 3.000 metros quadrados, dentro do território que compõe o patrimônio da CooperPalmas;</p>
+        <p><strong>XIII.</strong>    usar os recursos comuns disponibilizados pela cooperativa, cumprindo os requisitos e as condições estabelecidas pelo Regimento Interno.
+        Parágrafo único. As propostas de que trata o inciso II deverão ser apresentadas ao Conselho de Administração, com antecedência, a fim de serem devidamente divulgadas aos cooperados, para apreciação pela assembleia geral.</p>
+        <h1 id="-center-strong-cap-tulo-iii-strong-center-"><center><strong>CAPÍTULO III</strong></center></h1>
+        <h3 id="-center-i-dos-deveres-e-obriga-es-i-center-"><center><i>DOS DEVERES E OBRIGAÇÕES</i></center></h3>
+        <p><strong>Art. 9º</strong>. São deveres e obrigações do cooperado:</p>
+        <p><strong>I.</strong>    subscrever e integralizar as quotas-partes de capital social da CooperPalmas, nos termos deste estatuto;</p>
+        <p><strong>II.</strong>    satisfazer pontualmente os compromissos assumidos perante a cooperativa, reconhecendo contratos cooperativos e títulos executivos, assim como todos os instrumentos contratuais firmados;</p>
+        <p><strong>III.</strong>    cumprir as disposições deste estatuto e respeitar as deliberações tomadas pelos órgãos sociais da cooperativa;</p>
+        <p><strong>V.</strong>    zelar pelos interesses morais e materiais da cooperativa;</p>
+        <p><strong>V.</strong>    responder pela parte do rateio que lhe couber referente às eventuais perdas apuradas no exercício, nos termos deste estatuto;</p>
+        <p><strong>VI.</strong>    manter suas informações cadastrais na cooperativa constantemente atualizadas;</p>
+        <p><strong>VII.</strong>    comunicar ao Conselho de Administração e/ou ao Conselho Fiscal, por escrito e mediante protocolo, a ocorrência de quaisquer irregularidades relacionadas à cooperativa, caso disponha de indícios consistentes;</p>
+        <p><strong>VIII.</strong>    cumprir rigorosamente as obrigações relativas ao módulo ocupado dentro da cooperativa, inclusive sobre o uso de áreas comuns, tarifas de água e de energia elétrica, rateio de despesas com funcionários e prestadores de serviço esporádicos e eventuais;</p>
+        <p><strong>IX.</strong>    manter limpa(s) a(s) área(s) relativas às suas quotas-partes ou arcar com as despesas de roçagem e de limpeza promovidas pela cooperativa;</p>
+        <p><strong>X.</strong>    abster-se de realizar a queima de resíduos orgânicos, ou quaisquer materiais, tanto nas áreas de uso privado, como nos espaços comuns, cumprindo a legislação ambiental vigente.</p>
+        <h1 id="-center-strong-cap-tulo-iv-strong-center-"><center><strong>CAPÍTULO IV</strong></center></h1>
+        <h3 id="-center-i-da-demiss-o-elimina-o-e-exclus-o-i-center-"><center><i>DA DEMISSÃO, ELIMINAÇÃO E EXCLUSÃO</i></center></h3>
+        <p><strong>Art. 10.</strong> A demissão do cooperado, que não poderá ser negada, dar-se-á unicamente a seu pedido e será formalizada pelo cooperado demissionário, com apresentação de motivo, o que constará no termo de desligamento, que será assinado pelo presidente da CooperPalmas e pelo cooperado, em duas vias, sendo uma arquivada na cooperativa.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> O cooperado demitido poderá transferir suas quotas-partes e benfeitorias a outros cooperados da CooperPalmas .</p>
+        <p><strong>§ 2º</strong> No caso de devolução das quotas-partes para a CooperPalmas, o cooperado demitido será reembolsado em quinze prestações mensais, na forma definida no Regimento Interno.</p>
+        <p><strong>§ 3º</strong> O Conselho de Administração poderá determinar a devolução do valor das quotas-partes ao cooperado desligado de forma imediata, ou em número inferior de parcelas referidas § 2º deste artigo, desde que a CooperPalmas tenha recursos disponíveis.</p>
+        <p><strong>§ 4º</strong> Na hipótese de não haver recursos disponíveis, a devolução de valores de quotas-partes ao cooperado demitido será feita quando suas quotas-partes forem integralizadas por outro cooperado.</p>
+        </blockquote>
+        <p><strong>Art. 11.</strong> A eliminação do cooperado é aplicada em virtude de infração legal ou estatuária.</p>
+        <p><strong>Art. 12.</strong> O Conselho de Administração executará o processo de eliminação do cooperado que, além dos motivos de direito:</p>
+        <p><strong>I.</strong>    venha exercer qualquer atividade considerada prejudicial à CooperPalmas;</p>
+        <p><strong>II.</strong>    divulgar informações relevantes, sigilosas ou inverídicas sobre a sociedade que possa prejudica-la nas suas atividades e negócios sociais;</p>
+        <p><strong>III.</strong>    falta ao cumprimento das obrigações assumidas com a CooperPalmas ou causar-lhe prejuízo;</p>
+        <p><strong>IV.</strong>    infringir os dispositivos legais ou deste estatuto, em especial, os previstos nos Art. 7º,8º e 9º.
+        Parágrafo Único. Também serão passiveis de eliminação os integrantes de cargos eletivos após a sua destituição ou renúncia.</p>
+        <p><strong>Art. 13.</strong> Os trâmites para eliminação do cooperado serão deliberados em reunião do Conselho de Administração e o motivo que a ocasionou constará em parecer técnico.</p>
+        <blockquote>
+        <p><strong>§ 1º </strong> A cópia do parecer técnico será remetida ao cooperado, por processo que comprove as datas de remessa e de recebimento, no prazo de 30 (trinta) dias corridos, contando da data da reunião em que se decidiu pela eliminação.</p>
+        <p><strong>§ 2º</strong> No prazo de 30 (trinta) dias corridos, contados da data de recebimento formal do parecer técnico, o cooperado poderá interpor recurso ao presidente, que deverá serprotocolado e terá efeito suspensivo até a primeira assembleia geral que se realizar, ocasião em que o recurso será julgado pelo quadro social.</p>
+        <p><strong>§ 3º</strong>  Decorrido o prazo a que alude o parágrafo anterior, sem a manifestação do cooperado, ou sendo o recurso reprovado pela assembleia geral, a eliminação se tornará efetiva mediante assinatura do termo de desligamento da ficha de matrícula pelo presidente e o cooperado eliminado.</p>
+        </blockquote>
+        <p><em>Art. 14.*</em> A exclusão do cooperado será feita por:</p>
+        <p><strong>I.</strong>    dissolução da pessoa jurídica;</p>
+        <p><strong>II.</strong>    morte de pessoa física;</p>
+        <p><strong>III.</strong>    incapacidade civil não suprida;</p>
+        <p><strong>IV.</strong>    inadimplência superior a seis meses consecutivos, sem justificativa plausível ou por descumprimento reiterado de acordo de regularização de pagamento subscrito;</p>
+        <p><strong>V.</strong>    perda de vínculo que lhe facultou ingressar na CooperPalmas.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> A exclusão com fundamento nas disposições dos incisos I, II e III será automática, averbado no termo de desligamento de onde constará o seu motivo e a assinatura do presidente.</p>
+        <p><strong>§ 2º</strong>  A exclusão com fundamento no inciso V será processada na forma adotada para o caso de eliminação, conforme disposto no Art. 12.</p>
+        </blockquote>
+        <p><strong>Art. 15.</strong> Os processos de demissão e exclusão passarão pela assembleia geral para conhecimento e o de eliminação para votação do Parecer Técnico, ouvido o Conselho de Ética e após ampla defesa do cooperado.</p>
+        <h1 id="-center-strong-cap-tulo-v-strong-center-"><center><strong>CAPÍTULO V</strong></center></h1>
+        <h3 id="-center-i-das-responsabilidades-da-compensa-o-e-da-readmis-o-i-center-"><center><i>DAS RESPONSABILIDADES, DA COMPENSAÇÃO E DA READMISÃO</i></center></h3>
+        <p><strong>Art. 16.</strong> A responsabilidade solidária do cooperado é limitada ao valor de suas quotas-partes e, em caso de desligamento do quadro social, perdura até a aprovação das contas do exercício em que se deu o desligamento.</p>
+        <blockquote>
+        <p><strong>§ 1º </strong>As obrigações contraídas com a CooperPalmas por cooperados que vierem a falecer, e oriundas de sua responsabilidade como cooperado perante terceiros, passam aos herdeiros.</p>
+        <p><strong>§ 2º</strong> Os participantes de atos em que se oculte a natureza das operações sociais podem ser declarados pessoalmente responsáveis pelas obrigações contraídas em nome da CooperPalmas, sem prejuízo das sanções cíveis e penais cabíveis.</p>
+        </blockquote>
+        <p><strong>Art. 17</strong>. Nos casos de desligamento de cooperado, a CooperPalmas deverá promover a compensação prevista no art. 368 da Lei 10.406/02, entre o valor total do débito do cooperado, referente a todas as suas operações, e seu crédito oriundo das respectivas quotas- partes.</p>
+        <blockquote>
+        <p><em>Parágrafo único.</em> Caso o valor das quotas-partes seja inferior ao total do débito do cooperado e haja a compensação citada no caput deste artigo, o demissionário continuará responsável pelo saldo remanescente apurado, podendo a CooperPalmas tomar todas as providências cabíveis, inclusive judiciais.</p>
+        </blockquote>
+        <p><strong>Art. 18.</strong> O cooperado demitido somente poderá apresentar novo pedido de admissão ao quadro social da CooperPalmas após um ano, contado do dia do pagamento da última parcela das quotas-partes restituídas, se for o caso.</p>
+        <p><strong>Art.</strong> 19. O cooperado demitido, excluído ou eliminado poderá transferir suas quotas-partes e respectivas benfeitorias a outros cooperados, na forma estabelecida neste Estatuto.</p>
+        <p><strong>Art. 20.</strong> O cooperado eliminado somente poderá apresentar novo pedido de admissão ao quadro social da CooperPalmas após 10 anos, contados a partir do pagamento da última parcela das quotas-partes restituídas.
+        Parágrafo único - O cooperado readmitido subscreverá e integralizará o valor do capital social previsto neste Estatuto.</p>
+        <p><strong>Art. 21</strong>. Para o cooperado demitido ou eliminado ter direito à readmissão de que trata este capítulo, serão observadas as condições de admissão de cooperados, após aprovação pela Assembleia geral.</p>
+        <h1 id="-center-trong-t-tulo-iv-strong-center-"><center><trong>TÍTULO IV</strong></center></h1>
+        <h3 id="-center-i-dos-autos-e-patrim-nio-cap-tulo-i-dos-livros-i-center-"><center> <i>DOS AUTOS E PATRIMÔNIO CAPÍTULO I - DOS LIVROS</i> </center></h3>
+        <p><strong>Art.</strong> 22. A CooperPalmas adotará os livros:</p>
+        <p><strong>I.</strong>    de matrícula;</p>
+        <p><strong>II.</strong>    de atas de assembleias gerais;</p>
+        <p><strong>III.</strong>    de atas de reuniões do Conselho de Administração;</p>
+        <p><strong>IV.</strong>    de atas de reuniões da Diretoria Executiva;</p>
+        <p><strong>V.</strong>    de atas de reuniões do Conselho Fiscal;</p>
+        <p><strong>VI.</strong>    de presença dos cooperados nas assembleias gerais;</p>
+        <p><strong>VII</strong>.    contábeis, fiscais, trabalhistas, de registro de chapas e outros obrigatórios ou necessários;</p>
+        <p><strong>VIII.</strong>    de registro dos resultados dos processos administrativos de qualquer natureza;</p>
+        <p><strong>IX.</strong>    de registro de ocorrências e reclamações sobre o cotidiano da cooperativa.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Será adotado livro de envelopes com termo de abertura e encerramento, com numeração sequenciada, para armazenamento dos autos em folhas soltas;</p>
+        <p><strong>§ 2º</strong> Os livros serão armazenados na sede legal da CooperPalmas, sendo proibida a sua remoção permanente ou temporária para outro local, salvo no caso em que a sede possua alguma restrição física ou judicial, o que deverá, então, ser informado para todos os cooperados via circular, constando o motivo, o prazo e o local.</p>
+        </blockquote>
+        <p><strong>Art. 23.</strong> Os cooperados serão inscritos, por ordem cronológica de admissão, no livro de matrícula, e deverão constar na ficha de matrícula os seguintes dados:</p>
+        <p><strong>I.</strong>    número de matrícula, nome completo e data de admissão;</p>
+        <p><strong>II.</strong>    nacionalidade, estado civil, data de nascimento, número do CPF, número da Carteira de Identidade (com órgão expedidor e data de emissão), profissão/atividade, endereço, contato telefônico e e-mail;</p>
+        <p>I<strong>II.</strong>    forma de integralização das quotas-partes;</p>
+        <p><strong>IV.</strong>    observações;</p>
+        <p><strong>V.</strong>    espaço para lavratura do termo de desligamento;</p>
+        <p><strong>VI.</strong>    espaço para lavratura do capital subscrito;</p>
+        <p><strong>VII.</strong>    espaço para lavratura de movimentação das quotas-partes;</p>
+        <p><strong>VIII.</strong>    espaço para lavratura de notificações e penalidades eventualmente sofridas.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> A ficha de matrícula deverá sempre ser assinada pelos representantes legais da
+        CooperPalmas e pelo cooperado nos respectivos espaços quando necessário.</p>
+        <p><strong>§ 2º</strong> Após as assinaturas, a ficha deverá ser digitalizada e arquivada em meio eletrônico, além de compor a lista geral de cooperados, que deverá ser mantida atualizada e exposta para conhecimento geral.</p>
+        </blockquote>
+        <h1 id="-center-strong-cap-tulo-ii-strong-center-"><center><strong>CAPÍTULO II</strong></center></h1>
+        <h3 id="-center-i-dos-recursos-econ-micos-i-center-"><center><i>DOS RECURSOS ECONÔMICOS</i></center></h3>
+        <p><strong>Art. 24.</strong> São recursos econômicos da CooperPalmas:</p>
+        <p><strong>I.</strong>    o capital social;</p>
+        <p><strong>II.</strong>    o terreno de 136,87 hectares, onde se localiza a sede da CooperPalmas;</p>
+        <p><strong>III.</strong>    os recursos decorrentes de fundos constituídos pela cooperativa sucedida;</p>
+        <p><strong>IV.</strong>    os recursos oriundos de ações judiciais e demais cobranças promovidas pela cooperativa sucedida;</p>
+        <p><strong>V.</strong>    os recursos obtidos de operações com entidades particulares, nacionais ou internacionais, órgãos governamentais e com os cooperados;</p>
+        <p><strong>VI.</strong>    doações e legados;</p>
+        <p><strong>VII.</strong>    taxas cobradas dos cooperados, multas, sobras prescritas e não liquidadas e toda e qualquer fonte de receita eventual;</p>
+        <p><strong>VIII.</strong>    fundos obrigatórios e estatutários;</p>
+        <p><strong>IX.</strong>    quaisquer outros recursos previstos em lei.</p>
+        <h1 id="-center-strong-cap-tulo-iii-strong-center-"><center><strong>CAPÍTULO III</strong></center></h1>
+        <h3 id="-center-i-do-capital-m-nimo-da-subscri-o-e-da-integraliza-o-de-quota-partes-i-center-"><center><i>DO CAPITAL MÍNIMO, DA SUBSCRIÇÃO E DA INTEGRALIZAÇÃO DE QUOTA-PARTES</i><center></h3>
+        <p><strong>Art. 25.</strong> O capital social da CooperPalmas é dividido em quotas-partes, no valor de R$ 1,00 (um real) cada uma. O capital mínimo da cooperativa é de R$300.000,00 (trezentos mil reais).</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> O capital social será sempre realizado em moeda corrente nacional.</p>
+        <p><strong>§ 2º</strong> Cada cooperado deverá subscrever e integralizar no ato da admissão, no mínimo 15.000 quotas-partes, que equivale a R$15.000,00(quinze mil reais).</p>
+        <p><strong>§ 3º</strong>Nenhum cooperado poderá subscrever mais que 75.000 quotas-partes.</p>
+        <p><strong>§ 4º</strong> As quotas-partes do capital integralizado responderão sempre como garantia das obrigações que o cooperado assumir com a CooperPalmas.</p>
+        <p><strong>§ 5º</strong> A quotas-partes não poderão ser oferecidas em garantia de operações com terceiro.</p>
+        <p><strong>§ 6º</strong> A subscrição e a integralização inicial serão averbadas na ficha de matrícula, mediante termo que conterá as assinaturas do cooperado e do diretor financeiro;</p>
+        <p><strong>§ 7º</strong> Fica proibida a comercialização de qualquer fração da área de reserva legal constituída de, no mínimo, 27,6 hectares, patrimônio comum de todos os cooperados.</p>
+        </blockquote>
+        <h1 id="-center-strong-cap-tulo-iv-strong-center-"><center><strong>CAPÍTULO IV</strong></center></h1>
+        <h3 id="-center-i-da-transfer-ncia-i-center-"><center><i>DA TRANSFERÊNCIA</i></center></h3>
+        <p><strong>Art. 26.</strong> As quotas-partes são indivisíveis e só poderão ser transferidas para outros cooperados da CooperPalmas, na forma prevista no Regimento Interno.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Em caso de herança, as quotas-partes, assim como as benfeitorias existentes na área, somente poderão ser negociadas pelos herdeiros com outros cooperados ou com a cooperativa.</p>
+        <p><strong>§ 2º</strong> A transferência de quotas-parte será averbada na ficha de matrícula, mediante termo que conterá as assinaturas do cedente, do cessionário e do Conselho de Administração.</p>
+        <p><strong>§ 3º</strong> Não haverá posse de lote na cooperativa sem a aquisição da condição de cooperado, mediante adesão à cooperativa e assinatura do ato cooperativo e demais documentos obrigatórios, referidos nos artigos 6º e 7º deste estatuto.</p>
+        </blockquote>
+        <h1 id="-center-strong-cap-tulo-v-strong-center-"><center><strong>CAPÍTULO V</strong></center></h1>
+        <h3 id="-center-i-do-resgate-ordin-rio-i-center-"><center><i>DO RESGATE ORDINÁRIO</i></center></h3>
+        <p><strong>Art. 27.</strong> Nos casos de desligamento da cooperativa, o cooperado terá direito à devolução de suas quotas-partes integralizadas, acrescidas dos respectivos juros quando houver e das sobras que lhe tiverem sido registradas, ou reduzido das respectivas perdas, observado, em cada caso, além de outras disposições deste estatuto, o seguinte:</p>
+        <p><strong>I.</strong>    a devolução das quotas-partes será realizada após aprovação, pela assembleia geral, do balanço do exercício em que se deu o desligamento do cooperado;</p>
+        <p><strong>II.</strong>    em caso de demissão, eliminação, exclusão, exceto em caso de morte, o valor a ser devolvido pela cooperativa ao cooperado será divido em até 15 parcelas mensais consecutivas;</p>
+        <p><strong>III.</strong>    o herdeiro do cooperado falecido terá direito de permanecer na cooperativa, tornando-se cooperado, sucedendo o de cujus em todos os direitos e obrigações, atendidos os requisitos legais e estatutários;</p>
+        <p><strong>IV.</strong>    na hipótese de haver um número mínimo de quotas-partes, ou seja, 15.000 quotas-partes, e dois herdeiros ou mais, caberá a eles decidir quem ocupará a condição de cooperado, já que somente uma pessoa pode titularizar as quotas- partes;</p>
+        <p><strong>V.</strong>    o herdeiro poderá optar por receber as quotas-partes e direitos do de cujus, em parcelas mensais e consecutivas, conforme definido no Regimento Interno.</p>
+        <blockquote>
+        <p><em>Parágrafo único.</em> O cooperado que tiver construído benfeitorias no espaço de uso privado dentro da cooperativa terá o prazo de seis meses para levantar aquelas de natureza voluptuária e vender as de natureza útil ou necessária para a cooperativa ou para outros cooperados.</p>
+        </blockquote>
+        <h1 id="-center-strong-t-tulo-v-strong-center-"><center><strong>TÍTULO V</strong></center></h1>
+        <h3 id="-center-i-do-balan-o-das-sobras-das-perdas-e-dos-fundos-sociais-cap-tulo-i-center-"><center><i>DO BALANÇO, DAS SOBRAS, DAS PERDAS E DOS FUNDOS SOCIAIS CAPÍTULO I</center></h3>
+        <h3 id="-center-i-do-balan-o-e-do-resultado-i-center-"><center><i>DO BALANÇO E DO RESULTADO</i></center></h3>
+        <p><strong>Art. 28.</strong> O balanço e os demonstrativos de sobras ou perdas serão apurados no dia 31 de dezembro de cada ano.</p>
+        <p><strong>Art. 29.</strong> As sobras, deduzidos os valores destinados a formação dos fundos obrigatórios, ficarão à disposição da assembleia geral, que deliberará:</p>
+        <p><strong>I.</strong>    pelo rateio entre os cooperados, proporcionalmente às operações realizadas com a CooperPalmas, segundo a fórmula de cálculo estabelecida pela assembleia geral;</p>
+        <p><strong>II.</strong>    pela constituição de outros fundos;</p>
+        <p><strong>III.</strong>    pela destinação aos fundos existentes;</p>
+        <p><strong>IV.</strong>    pela manutenção na conta “sobras/perdas acumuladas”; ou</p>
+        <p><strong>V.</strong>    pela incorporação ao capital do cooperado, observada a proporcionalidade referida no inciso I deste artigo.</p>
+        <p><strong>Art. 30.</strong> As perdas verificadas no decorrer do exercício serão cobertas com recursos provenientes do Fundo de Reserva ou, no caso de insuficiência, alternativa ou cumulativamente, das seguintes formas:</p>
+        <p><strong>I.</strong>    mediante compensação por meio de sobras dos exercícios seguintes, desde que a cooperativa:</p>
+        <blockquote>
+        <p><strong>a.</strong>    mantenha-se ajustada aos limites de patrimônio exigíveis para sua manutenção e funcionamento;</p>
+        <p><strong>b.</strong>    conserve o controle da parcela correspondente a cada cooperado no saldo das perdas retidas, evitando que os novos cooperados suportem perdas de exercício em que não eram inscritos na sociedade;</p>
+        </blockquote>
+        <p><strong>II</strong>.    mediante rateio entre os cooperados, considerando-se as operações realizadas ou mantidas na cooperativa, excetuando-se o valor das quotas-partes integralizadas, segundo fórmula de cálculo estabelecida pela assembleia geral.</p>
+        <h1 id="-center-strong-cap-tulo-ii-strong-center-"><center><strong>CAPÍTULO II</strong></center></h1>
+        <h3 id="-center-i-dos-fundos-i-center-"><center><i> DOS FUNDOS</i></center></h3>
+        <p><strong>Art. 31</strong>. Das sobras apuradas no exercício, serão deduzidos os seguintes percentuais para os fundos obrigatórios:</p>
+        <p><strong>I.</strong>    no mínimo 10% (dez) para o Fundo de Reserva destinado a reparar perdas e a atender ao desenvolvimento das atividades da CooperPalmas;</p>
+        <p><strong>II.</strong>    no mínimo 5% (cinco) para o Fundo de Assistência Técnica, Educacional e Social (Fates), destinado à prestação de assistência aos cooperados, seus familiares e aos empregados da CooperPalmas, de acordo com normativo próprio, aprovado pela assembleia geral, respeitando o limite mínimo legal;</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Os serviços a serem atendidos pelo Fates poderão ser executados mediante convênio e parcerias com entidades públicas ou privadas.</p>
+        <p><strong>§ 2º</strong> Os lucros não operacionais, auxílios ou doações sem destinação específica e eventuais resultados positivos decorrentes de participação em sociedades não cooperativas serão levados à conta do Fates e contabilizado separadamente, de forma a permitir cálculo para incidência de tributos.</p>
+        </blockquote>
+        <p><strong>Art. 32.</strong> Os fundos obrigatórios são indivisíveis entre os cooperados, mesmo nos casos de dissolução ou de liquidação da CooperPalmas, hipótese em que serão recolhidos à União ou terão outra destinação, conforme previsão legal.</p>
+        <p><strong>Art. 33.</strong> Além dos fundos previstos no Art. 29, a assembleia geral poderá criar outros fundos de provisões, constituídos por recursos obrigatoriamente destinados a fins específicos, com caráter temporário, fixando o modo de formação, de amplificação, de liquidação e de futura devolução aos cooperados que contribuíram para sua formação.</p>
+        <h1 id="-center-strong-titulo-vi-strong-center-"><center><strong>TITULO VI</strong></center></h1>
+        <h3 id="-center-i-das-opera-es-i-center-"><center><i>DAS OPERAÇÕES</i></center></h3>
+        <p><strong>Art. 34.</strong> A CooperPalmas efetuará operações previstas neste estatuto, as quais serão praticadas, preferencialmente, por cooperados e configuradas como ato cooperativo.</p>
+        <blockquote>
+        <p><strong>§ 1º </strong>Denominam-se atos cooperativos os praticados entre a cooperativa e seus cooperados, ou entre os cooperados, para a consecução do objeto social da CooperPalmas.</p>
+        <p><strong>§ 2º</strong> O ato cooperativo não implica operação de mercado, nem contrato de compra e venda de produto ou mercadoria.</p>
+        <p><strong>§ 3º</strong> Os resultados das operações de atos cooperativos, quando positivos, serão contabilizados em separado, de modo a permitir isenção de tributos e deverão ser revertidos aos fundos obrigatórios;</p>
+        <p><strong>§ 4º</strong> Saldos remanescentes ficarão à disposição da assembleia geral, na forma do Art. 32 deste estatuto.</p>
+        </blockquote>
+        <p><strong>Art. 35.</strong> As operações tratadas no Art. 32 poderão ser praticadas por terceiros, desde que tal faculdade atenda ao objeto social da CooperPalmas e que tais operações estejam em conformidade com este estatuto.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Quando a CooperPalmas decidir por operar com terceiros, as operações se configuram como atos não cooperativos.</p>
+        <p><strong>§ 2º</strong> Os resultados das operações de atos não cooperativos serão contabilizados em separado, de modo a permitir cálculo para incidência de tributos quando positivos, sendo levados à conta do Fates, não podendo ser objeto de rateio entre os cooperados.</p>
+        <p><strong>§ 3º</strong> Quando os resultados forem negativos devem ser levados à reserva legal e, se insuficiente sua cobertura, compensados conforme disposto no Art. 28.</p>
+        </blockquote>
+        <p><strong>Art. 36.</strong> A relação de trabalho advinda das operações da estrutura de governança, do Título VII, não equivale a emprego, na forma de contrato de trabalho previsto na C/LT, devendo obedecer à instrução normativa, este estatuto e demais normativos aprovados em assembleia.</p>
+        <h1 id="-center-strong-titulo-vii-strong-center-"><center><strong>TITULO VII</strong></center></h1>
+        <h3 id="-center-i-da-estrutura-de-governan-a-i-center-"><center><i>DA ESTRUTURA DE GOVERNANÇA</i></center></h3>
+        <p><strong>Art. 37</strong>. A CooperPalmas exercerá suas funções através dos seguintes órgãos:</p>
+        <p><strong>I.</strong>    instâncias deliberativas, compostas pela Assembleia Geral e pelo Conselho de Administração;</p>
+        <p><strong>II.</strong>    instância executiva, composta por uma Diretoria Executiva;</p>
+        <p><strong>III.</strong>    instância fiscalizatória, composta pelo Conselho Fiscal; e</p>
+        <p><strong>IV.</strong>    instância de apoio, composta por Comissões Temáticas e Conselho de Ética, de caráter permanente, além de Grupos de Trabalho, de natureza provisória e pontual.</p>
+        <h1 id="-center-strong-cap-tulo-i-strong-center-"><center><strong>CAPÍTULO I</strong></center></h1>
+        <h3 id="-center-i-da-assembleia-geral-i-center-"><center><i>DA ASSEMBLEIA GERAL</i></center></h3>
+        <p><strong>Art. 38.</strong> A assembleia geral, que poderá ser ordinária ou extraordinária, é o órgão supremo da CooperPalmas, tendo poderes nos limites da lei e deste estatuto, para tomar toda e qualquer decisão de interesse da entidade.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Será facultada a realização de assembleias conjuntas (ordinárias e extraordinárias) quando assim mencionado em editais de convocação.</p>
+        <p><strong>§ 2º</strong> As decisões tomadas em assembleia geral vinculam todos os cooperados, ainda que ausentes ou discordantes.</p>
+        </blockquote>
+        <p><strong>Art. 39.</strong> A assembleia geral será convocada pelo Conselho de Administração da CooperPalmas.</p>
+        <blockquote>
+        <p><em>Parágrafo único.</em> A assembleia geral poderá também ser convocada pelo Conselho Fiscal ou por 1/5 dos cooperados com direito a voto, após solicitação não atendida pelo Conselho de Administração, no prazo de 10 dias, contados a partir da data de protocolização da solicitação.</p>
+        </blockquote>
+        <p><strong>Art. 40.</strong> A assembleia geral será convocada com antecedência mínima de 10 dias e em primeira, segunda e terceira convocações, no mesmo dia, com o intervalo mínimo de 01(uma) hora entre as convocações, constado no respectivo edital, divulgado de forma tríplice e cumulativamente, na seguinte forma:</p>
+        <p><strong>I.</strong>    afixação em locais apropriados das dependências comumente mais frequentadas pelos cooperados;</p>
+        <p><strong>II.</strong>    publicação em jornal de circulação regular em todas as regiões das áreas de ação da CooperPalmas e de admissão de cooperados;</p>
+        <p><strong>III.</strong>    publicação no site da cooperativa e na sua página no facebook;</p>
+        <p><strong>IV.</strong>    comunicação aos cooperados por e-mail e whatsapp e outas mídias sociais;</p>
+        <p><strong>V.</strong>    nos meios expressamente escolhidos pelo cooperado na sua ficha de matrícula.</p>
+        <p><strong>Art.</strong> 41. Não se conseguindo realizar a assembleia geral em terceira convocação por falta de quorum, será reiterada a convocação para nova data.</p>
+        <p><strong>Art. 42.</strong> O edital de convocação da assembleia deve conter os dados da cooperativa, o número de cooperados com direito a voto, o dia, o horário e o local da reunião e a Ordem do Dia dos trabalhos.
+        Parágrafo único. Caso a convocação seja feita por cooperado, o edital deve ser assinado pelos signatários do documento que a solicitou.</p>
+        <p><strong>Art. 43.</strong> O quórum mínimo de instalação da assembleia geral é o seguinte:</p>
+        <p><strong>I.</strong>    2/3 dos cooperados, em primeira convocação;</p>
+        <p><strong>II.</strong>    metade mais um dos cooperados, em segunda convocação;</p>
+        <p><strong>III.</strong>    mínimo de 10 cooperados, na terceira convocação.</p>
+        <p><strong>Art. 44.</strong> Os trabalhos da assembleia geral serão habitualmente dirigidos pela Presidência da cooperativa ou, em sua ausência, por componente do Conselho de Administração, por ela designado.</p>
+        <p><strong>Art. 45</strong>. Nas deliberações das assembleias gerais, cada cooperado terá direito a um único voto, sem restrições ou vantagem de qualquer espécie.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Não será permitida a representação do voto por meio de mandatário ou procuração.</p>
+        <p><strong>§ 2º</strong> Não poderá votar ou ser votado o cooperado que:</p>
+        </blockquote>
+        <p><strong>I.</strong>    tenha sido admitido após a convocação da assembleia;</p>
+        <p><strong>II.</strong>    não esteja em dia com suas obrigações perante a CooperPalmas;</p>
+        <p><strong>III.</strong>    esteja respondendo a processo cujo parecer esteja na pauta de deliberação da assembleia.</p>
+        <p><strong>Art. 46.</strong> Os ocupantes de cargos estatutários e os cooperados com interesse direto ou indireto nos assuntos da assembleia não poderão votar, embora possam tomar parte nos debates.</p>
+        <p><strong>Art. 47.</strong> Em regra, a votação será aberta ou por aclamação, mas a assembleia geral poderá optar por outra forma, atendendo inclusive à regulamentação própria.</p>
+        <p><strong>Art. 48.</strong> As deliberações na assembleia geral serão tomadas por maioria de votos dos cooperados presentes com direito a voto, exceto quando se tratar dos assuntos de competência exclusiva da assembleia geral extraordinária, quando serão necessários os votos de 2/3 dos presentes.</p>
+        <p><strong>Art. 49.</strong> Os assuntos discutidos e deliberados na assembleia geral constarão de ata lavrada em folhas soltas, numeradas sequencialmente e armazenadas em livro próprio, a qual, lida e aprovada, será assinada ao final dos trabalhos pelo secretário, pelo presidente ou por quem dirigiu e secretariou a assembleia, pelos cooperados eleitos para os cargos estatutários e, ainda, por quantos cooperados quiserem fazê-lo.</p>
+        <blockquote>
+        <p><em>Parágrafo único.</em> Nas atas de eleição devem, também, constar, para os membros eleitos: cargo, nome completo, número de CPF, nacionalidade, estado civil, profissão, carteira de identidade (número, data de emissão e órgão expedidor), endereço completo (inclusive CEP), prazos de mandato e declaração de desimpedimento referido no Art. 61, V deste estatuto.</p>
+        </blockquote>
+        <p><strong>Art. 50.</strong> Prescreve em quatro anos a ação para anular as deliberações das assembleias gerais viciadas por erro, dolo, fraude, simulação ou tomadas em violação a este estatuto e/ou à legislação pertinente, contando-se o prazo a partir da data em que a assembleia geral tenha sido realizada.</p>
+        <p><strong>Art. 51</strong>. É da competência da assembleia geral ordinária ou extraordinária deliberar sobre:</p>
+        <p><strong>I.</strong>    alienação ou oneração dos bens imóveis de uso próprio da sociedade;</p>
+        <p><strong>II.</strong>    destituição de membros do Conselho de Administração ou do Conselho Fiscal;</p>
+        <p><strong>III</strong>.    aprovação de regulamento eleitoral;</p>
+        <p><strong>IV.</strong>    aprovação do regimento Interno;</p>
+        <p><strong>V.</strong>    recurso de cooperados no caso de eliminação;</p>
+        <p><strong>VI.</strong>    associação e demissão da CooperPalmas.</p>
+        <blockquote>
+        <p><em>Parágrafo único.</em> Ocorrendo destituição de que trata o inciso II, que possa afetar a regularidade da administração ou da fiscalização da cooperativa, poderá a assembleia empossar interinamente membros substitutos do Conselho de Administração e do Conselho Fiscal de acordo com este estatuto, até a posse dos novos, cuja eleição se efetuará no prazo máximo de 30 dias, contado da data em que houve a destituição.</p>
+        </blockquote>
+        <h1 id="-center-strong-se-o-i-strong-center-"><center><strong>SEÇÃO I</strong></center></h1>
+        <h3 id="-center-i-da-assembleia-geral-ordin-ria-i-center-"><center><i>DA ASSEMBLEIA GERAL ORDINÁRIA</i></center></h3>
+        <p>Art. 52. A assembleia geral ordinária será realizada obrigatoriamente uma vez por ano, no decorrer dos três primeiros meses do exercício social, para deliberar sobre os seguintes assuntos que deverão constar da ordem do dia:</p>
+        <p>I.    prestação de contas do Conselho de Administração e aprovação pelos cooperados, acompanhada do parecer do Conselho Fiscal, compreendendo:</p>
+        <blockquote>
+        <p><strong>a)</strong>    relatório de gestão;</p>
+        <p><strong>b)</strong>    balanços contábeis;</p>
+        <p><strong>c)</strong>    demonstrativo das sobras apuradas ou das perdas decorrentes da insuficiência das contribuições para cobertura das despesas da cooperativa, deduzindo-se, no primeiro caso, as parcelas para os fundos obrigatórios.</p>
+        </blockquote>
+        <p><strong>II.</strong>    quaisquer assuntos de interesse social, devidamente mencionados no edital de convocação;</p>
+        <p><strong>III.</strong>    destinação das sobras apuradas, deduzidas as parcelas para os fundos obrigatórios, ou rateio das perdas verificadas, com a possibilidade de compensar, por meio de sobras dos exercícios seguintes o saldo remanescente das perdas verificadas no exercício findo;</p>
+        <p><strong>IV.</strong>    eleição dos componentes do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal, quando for o caso;</p>
+        <p><strong>V.</strong>    fixação dos valores de honorários e gratificações dos membros do Conselho de Administração, da Diretoria Executiva, do Conselho Fiscal e de outros órgãos, quando for o caso.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Nos casos de que trata o inciso I deste artigo, o Conselho de Administração e a Diretoria Executiva se ausentarão da mesa durante a votação, sendo o presidente e o secretário substituídos temporariamente por cooperados indicados para dirigir os trabalhos.</p>
+        <p><strong>§ 2º</strong> A aprovação de que trata o parágrafo anterior não desonera de responsabilidade os membros do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal.</p>
+        <p><strong>§ 3º</strong> Nos casos que trata o inciso V deste artigo, os membros do Conselho de Administração e Fiscal não terão direito a voto.</p>
+        <p><strong>§ 4º</strong> Os relatórios e documentos objeto de apreciação deverão ser divulgados, pelo menos 10 dias antes da assembleia geral ordinária, em meio virtual e também em cópia impressa na sede da cooperativa, assegurando a ciência de todos os cooperados.</p>
+        </blockquote>
+        <h1 id="-center-strong-se-o-ii-strong-center-"><center><strong>SEÇÃO II</strong></center></h1>
+        <h3 id="-center-i-da-assembelia-geral-extraordin-ria-i-center-"><center><i>DA ASSEMBELIA GERAL EXTRAORDINÁRIA </i></center></h3>
+        <p><strong>Art. 53.</strong> A assembleia geral extraordinária será realizada sempre que necessário e poderá deliberar sobre qualquer assunto de interesse da CooperPalmas, desde que mencionado em edital de convocação, sendo de sua competência exclusiva:</p>
+        <p><strong>I.</strong>    reforma do estatuto social;</p>
+        <p><strong>II.</strong>    fusão, incorporação ou desmembramento da cooperativa;</p>
+        <p><strong>III.</strong>    mudança do objetivo social;</p>
+        <p><strong>IV.</strong>    dissolução voluntária da sociedade e nomeação de liquidantes;</p>
+        <p><strong>V.</strong>    prestação de conta do liquidante;</p>
+        <p><strong>VI.</strong>    autorização de despesas de investimentos e de custeio com valores superiores a 20(vinte) salários mínimos, exceto aquelas de caráter emergencial.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> São necessários os votos de 2/3 dos cooperados com direito a voto, para tornar válidas as deliberações de que trata este artigo.</p>
+        <p><strong>§ 2º</strong> Poderão também ser deliberados quaisquer assuntos de interesse social, devidamente mencionados no edital de convocação.</p>
+        </blockquote>
+        <h1 id="-center-strong-cap-tulo-ii-strong-center-"><center><strong>CAPÍTULO II</strong></center></h1>
+        <h3 id="-center-i-do-conselho-de-administra-o-i-center-"><center><i>DO CONSELHO DE ADMINISTRAÇÃO</i></center></h3>
+        <p><strong>Art. 54.</strong> O Conselho de Administração é órgão da instância decisória da CooperPalmas e será formado por nove membros, eleitos entre os cooperados.</p>
+        <blockquote>
+        <p><strong>§ 1º.</strong> Os três membros integrantes da Diretoria Executiva comporão o Conselho de Administração.</p>
+        <p><strong>§ 2º</strong> Os seis membros restantes do Conselho de Administração serão responsáveis pelas seguintes coordenações temáticas:</p>
+        </blockquote>
+        <p><strong>I.</strong>    Coordenação Técnica Agroambiental;</p>
+        <p><strong>II.</strong>    Coordenação de Projetos;</p>
+        <p><strong>III.</strong>    Coordenação de Relações Institucionais;</p>
+        <p><strong>IV.</strong>    Coordenação de Educação Corporativa;</p>
+        <p><strong>V.</strong>    Coordenação Cultural;</p>
+        <p><strong>VI.</strong>    Coordenação de Comunicação.</p>
+        <blockquote>
+        <p><strong>§ 3º</strong> O Conselho se reunirá ordinariamente uma vez a cada dois meses e extraordinariamente sempre que convocado por qualquer dos membros.</p>
+        <p><strong>§ 4º.</strong> O Conselho será presidido pelo presidente da Diretoria Executiva ou por qualquer membro do Conselho, eleito pela maioria no início das reuniões.</p>
+        </blockquote>
+        <p><strong>Art. 55.</strong> O Conselho de Administração terá como atribuições:</p>
+        <p><strong>I.</strong>    fixar diretrizes e aprovar os planos periódicos de trabalho;</p>
+        <p><strong>II.</strong>    examinar e aprovar os orçamentos;</p>
+        <p><strong>III.</strong>    aprovar e supervisionar a execução dos projetos elaborados pelos colaboradores da cooperativa;</p>
+        <p><strong>IV.</strong>    aprovar e divulgar, por meio de resolução, as políticas da cooperativa;</p>
+        <p><strong>V.</strong>    propor para a assembleia geral o Regimento Interno e Instruções Normativas, entre outros regulamentos necessários;</p>
+        <p><strong>VI.</strong>    acompanhar e supervisionar o estado econômico-financeiro da cooperativa e o desenvolvimento das operações e atividades em geral;</p>
+        <p><strong>VII</strong>.    deliberar e acompanhar os processos de admissão e demissão dos cooperados;</p>
+        <p><strong>VIII.</strong>    acompanhar e emitir parecer sobre a eliminação de cooperados, ouvido o Conselho de Ética;</p>
+        <p><strong>IX.</strong>    deliberar sobre a convocação da assembleia geral;</p>
+        <p><strong>X.</strong>    deliberar sobre a alocação e aplicação dos recursos do Fates, respeitado o regulamento próprio quando houver;</p>
+        <p><strong>XI.</strong>    analisar e submeter a assembleia geral proposta de criação de fundos;</p>
+        <p><strong>XII.</strong>    deliberar sobre a contratação de auditoria;</p>
+        <p><strong>XIII.</strong>    propor à assembleia geral a revisão do valor estipulado para subscrição e integralização de quotas de capital e das taxas mensais de manutenção;</p>
+        <p><strong>XIV.</strong>    estabelecer normas internas em casos omissos e, se for o caso, submetê-las à deliberação da assembleia;</p>
+        <p><strong>XV.</strong>    deliberar sobre alienação de bens recebidos na execução de garantias;</p>
+        <p><strong>XVI</strong>.    apoiar e deliberar sobre as atividades da Coordenação Técnica Agroambiental, visando viabilizar as finalidades institucionais da cooperativa;</p>
+        <p><strong>XVII.</strong>    atuar, em apoio às Coordenações de Projetos e Relações Institucionais, na prospecção e captação de recursos financeiros para realização de projetos de interesse da cooperativa;</p>
+        <p><strong>XVIII.</strong>    instituir política e criar projetos de natureza cultural, orientando o trabalho da Coordenação de Cultura;</p>
+        <p><strong>XIX.</strong>    instituir política e implementar ações de natureza educativa, orientando o trabalho da Coordenação de Educação Corporativa.</p>
+        <p><strong>XX.</strong>    instituir política e elaborar plano de comunicação, orientando o trabalho da Coordenação de Comunicação.</p>
+        <p><strong>Art. 56.</strong> Caberá à Coordenação Técnica Agroambiental propor as ações necessárias à implementação das finalidades e objetivos agroambientais da CooperPalmas, além de analisar tecnicamente as propostas de programas, projetos e ações apresentados à cooperativa por cooperados ou por terceiros.</p>
+        <p><strong>Art. 57.</strong> À Coordenação de Projetos caberá prospectar, buscar parceiros, propor, recepcionar, elaborar, implementar, em conjunto com outras Coordenações, os projetos relacionados às finalidades sociais da CooPalmas; organizar e manter disponíveis para consultas os projetos diretamente relacionados com as atribuições das demais comissões e grupos de trabalho; coordenar as ações dos grupos de trabalho criados pelo Conselho de Administração, entre outras.</p>
+        <p><strong>Art. 58.</strong> A Coordenação de Relações Institucionais será responsável por estabelecer contatos, fomentar parcerias, dialogar com autoridades e representar a CooperPalmas junto à OCDF, Sistema S, Asproeste, órgãos públicos e o universo de pessoas físicas e jurídicas, privadas e públicas, que possam contribuir para as finalidades estatutárias e para a efetivação dos princípios que norteiam a cooperativa.</p>
+        <p><strong>Art. 59.</strong> A Coordenação de Educação Corporativa será responsável por propor projetos pedagógicos para desenvolvimento de capacitações, curso, oficinas e encontros que aprimorem o espírito cooperativo e desenvolvam as áreas de atuação da corporativa, conforme projeto pedagógico que apresentará anualmente em assembleia.</p>
+        <p><strong>Art. 60.</strong> A Coordenação Cultural, visando agregar a comunidade e promover a cultura, será responsável por propor, organizar e realizar projetos e eventos culturais e recreativos, como saraus, festivais, concertos, peças teatrais, shows, feiras, cinemateca, palestras, encontros de leitura, entre outros, no âmbito da CooPalmas.</p>
+        <p><strong>Art. 61.</strong> Compete à Coordenação de Comunicação gerar as condições necessárias para garantir a transparência de todos os atos do Conselho de Administração, da Diretoria Executiva e das demais instâncias da estrutura de governança da CooPalmas; criando e administrando os canais de comunicação da cooperativa, dando cumprimento ao dever de informar e ao direito de ser informado que assiste a totalidade dos cooperados.</p>
+        <p><strong>Art. 62.</strong> Outras atribuições das Coordenações poderão ser descritas no Regimento Interno, deliberadas pelo Conselho de Administração ou definidas em assembleias.</p>
+        <p><strong>Art. 63.</strong> Constituem condições básicas para o exercício do cargo de conselheiro:</p>
+        <p><strong>I.</strong>    ser cooperado;</p>
+        <p><strong>II.</strong>    ter reputação ilibada;</p>
+        <p><strong>III.</strong>    não responder, por qualquer empresa da qual seja controlador ou administrador, por pendências relativas a protesto de títulos, cobranças judiciais, emissão de cheques sem fundo, inadimplências de obrigações e outras ocorrências ou circunstâncias análogas;</p>
+        <p><strong>IV.</strong>    não participar da administração ou deter controle acionário de empresas de ramos de atividade similares ou correlatas da CooperPalmas;</p>
+        <p><strong>V.</strong>    não estar impedido por lei especial, nem condenado por crime falimentar, de sonegação fiscal, de prevaricação, de corrupção ativa ou passiva, de concussão, de peculato, contra a economia popular, a fé pública e a propriedade ou condenado a pena criminal que vede, ainda que temporariamente, o acesso a cargos públicos.</p>
+        <blockquote>
+        <p><em>Parágrafo único.</em> Não podem compor o Conselho de Administração membros com qualquer grau de parentesco em linha reta, colateral, cônjuge ou companheiro(a) e são também inelegíveis:</p>
+        </blockquote>
+        <p><strong>I.</strong>    cooperados impedidos por lei;</p>
+        <p><strong>II.</strong>    cooperados impedidos de votar;</p>
+        <p><strong>III.</strong>    cooperados condenados a pena que vede, ainda que temporariamente, o acesso a cargos públicos;</p>
+        <p><strong>IV.</strong>    cooperados condenados por crime falimentar, de sonegação fiscal, de prevaricação, de suborno, de corrupção ativa ou passiva, de concussão, de peculato, ou contra a economia popular, a fé pública ou a propriedade;</p>
+        <p><strong>Art. 64.</strong> Para se candidatarem a cargo político-partidário, os membros do Conselho de Administração deverão licenciar-se do cargo ocupado na CooperPalmas.</p>
+        <p><strong>Art. 65.</strong> À exceção da primeira eleição, somente poderão candidatar-se a cargos eletivos da cooperativa, cooperados com, no mínimo, um ano de filiação.</p>
+        <p><strong>Art. 66.</strong> O mandato do Conselho de Administração é de dois anos, sendo obrigatória, ao término de cada período, a renovação de, no mínimo, 1/3 de seus membros.</p>
+        <blockquote>
+        <p><em>Parágrafo único.</em> Os eleitos serão empossados no dia seguinte ao término do mandato do Conselho de Administração anterior, mas poderão eleger uma Comissão de Transição para tomar conhecimento de todos os projetos e questões em andamento, bem como dos documentos de uso cotidiano, a fim de se evitar prejuízo para o andamento normal das atividades da cooperativa.</p>
+        </blockquote>
+        <p><strong>Art. 67</strong>. Será convocada assembleia geral para eleição de novos membros do Conselho de Administração:</p>
+        <p><strong>I.</strong>    nos casos de impedimentos superiores a 60 dias corridos;</p>
+        <p><strong>II</strong>.    nos casos de vacância por:</p>
+        <blockquote>
+        <p><strong>a)</strong>    morte</p>
+        <p><strong>b)</strong>    renúncia,</p>
+        <p><strong>c)</strong>    destituição,</p>
+        <p><strong>d)</strong>    não comparecimento a três reuniões ordinárias sem justificativa; ou</p>
+        <p><strong>e)</strong>    desligamento do quadro de cooperados.</p>
+        </blockquote>
+        <h1 id="-center-strong-cap-tulo-iii-strong-center-"><center> <strong> CAPÍTULO III </strong> </center></h1>
+        <h3 id="-center-i-da-diretoria-executiva-i-center-"><center><i>DA DIRETORIA EXECUTIVA</i></center></h3>
+        <p><strong>Art. 68</strong> A Diretoria Executiva eleita pelos cooperados será composta por um presidente, um diretor administrativo e um diretor financeiro.</p>
+        <p><strong>Art. 69.</strong> A Diretoria Executiva reunir-se-á, ordinariamente, uma vez por mês, em dia e hora previamente agendados e, extraordinariamente, sempre que necessário, por convocação do presidente, do Conselho de Administração ou do Conselho Fiscal:</p>
+        <p><strong>I.</strong>    as reuniões se realizarão com presença mínima da metade mais um dos membros;</p>
+        <p><strong>II.</strong>    as deliberações serão tomadas pela maioria simples de votos dos presentes;</p>
+        <p><strong>III.</strong>    os assuntos tratados e as deliberações resultantes constarão em atas lavradas de folhas soltas assinadas pelos presentes e armazenadas em livro próprio.</p>
+        <p><strong>Art. 70</strong>. Nas ausências ou impedimentos temporários iguais ou inferiores a 60 dias corridos, o presidente será substituído pelo diretor administrativo e este pelo diretor financeiro.</p>
+        <p><strong>Art. 71</strong>. Compete à Diretoria Executiva, nos limites legais e deste estatuto, atendidas as decisões da assembleia geral:</p>
+        <p><strong>I.</strong>    contratar e demitir colaboradores da cooperativa;</p>
+        <p><strong>II.</strong>    contratar funcionário para a função de assistência administrativa da cooperativa;</p>
+        <p><strong>III.</strong>    examinar as denúncias de irregularidades praticadas no âmbito da cooperativa, determinando apurações e as providências cabíveis, de tudo dando ciência ao Conselho de Administração;</p>
+        <p><strong>IV.</strong>    acompanhar e adotar providências necessárias para o cumprimento do planejamento estratégico quando assim houver;</p>
+        <p><strong>V.</strong>    autorizar colaboradores a participar de atos de interesse da CooperPalmas, representando-a;</p>
+        <p><strong>VI</strong>.    gerenciar e supervisionar a execução dos trabalhos de conservação, embelezamento e investimentos a serem executados na área territorial da cooperativa.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Perderá, automaticamente, o cargo o membro da Diretoria Executiva que, sem justificativa, faltar a duas reuniões consecutivas ou quatro reuniões durante o ano.</p>
+        <p><strong>§ 2º</strong> O Regimento Interno estabelecerá os limites de valor das despesas a serem realizadas pela Diretoria Executiva e as respectivas alçadas do Conselho de Administração, Conselho Fiscal e da Assembleia Geral.</p>
+        </blockquote>
+        <p><strong>Art. 72.</strong> São atribuições do presidente:</p>
+        <p><strong>I.</strong>    representar a CooperPalmas nas reuniões e nas assembleias gerais do Sistema OCB e outras entidades de representação do cooperativismo;</p>
+        <p><strong>II</strong>.    convocar e presidir as assembleias gerais ordinárias, extraordinárias e especiais;</p>
+        <p><strong>III.</strong>    convocar reuniões do Conselho de Administração e com o Conselho Fiscal;</p>
+        <p><strong>IV.</strong>    permitir a participação, sem direito a voto, de colaboradores nas reuniões da Diretoria Executiva;</p>
+        <p><strong>V.</strong>    tomar votos e votar, com a finalidade do desempate, nas deliberações da Diretoria Executiva, respeitado o regimento próprio, quando assim houver;</p>
+        <p><strong>VI.</strong>    proporcionar, por meio da transparência na condução das reuniões, a obtenção de informações sobre todos os trabalhos feitos na cooperativa;</p>
+        <p><strong>VII.</strong>    proporcionar, aos demais membros da Diretoria Executiva, conhecimento prévio dos assuntos a serem discutidos nas reuniões;</p>
+        <p><strong>VIII.</strong>    representar a CooperPalmas, ativa ou passivamente, em juízo ou fora dele, dentro dos seus poderes legais e estatutários;</p>
+        <p><strong>IX.</strong>    colaborar na elaboração do plano anual de atividades da CooperPalmas junto com o Conselho de Administração e com os órgãos de apoio;</p>
+        <p><strong>X.</strong>    coordenar e controlar a execução das diretrizes, normas e planos estabelecidos pelo Conselho de Administração;</p>
+        <p><strong>XI.</strong>    assinar, juntamente com o diretor financeiro, cheques, contratos e demais documentos constitutivos de obrigações, dentro dos seus poderes legais e estatutários;</p>
+        <p><strong>XII.</strong>    cumprir e fazer cumprir as deliberações das assembleias gerais, do Conselho de Administração e da própria Diretoria Executiva, como também o disposto neste estatuto, no Regimento Interno e nas instruções normativas;</p>
+        <p><strong>XIII.</strong>    propor, juntamente com o diretor financeiro, ao Conselho de Administração e à assembleia geral, quando for o caso:</p>
+        <blockquote>
+        <p>  <strong>a)</strong>    a compra, locação, reforma, manutenção e venda de patrimônio da cooperativa;</p>
+        <p> <strong>b)</strong>    a contratação de pessoal administrativo;</p>
+        </blockquote>
+        <p><strong>XIV.</strong>    apresentar à assembleia geral ordinária o relatório da gestão, o balanço geral, o demonstrativo das sobras apuradas ou das perdas verificadas no exercício e o parecer do Conselho Fiscal;</p>
+        <p><strong>XV.</strong>    aplicar as advertências estipuladas pelos órgãos da CooperPalmas.</p>
+        <p><strong>Art. 73.</strong> São atribuições do diretor administrativo:</p>
+        <p><strong>I.</strong>    dirigir as atividades administrativas no que tange às políticas de recursos humanos, tecnológicos e materiais e às atividades fins da CooperPalmas;</p>
+        <p><strong>II.</strong>    estabelecer as rotinas de serviços internos, comunicação, processamento de dados e utilização dos recursos humanos e materiais da cooperativa;</p>
+        <p><strong>III.</strong>    organizar e controlar os contratos de prestação de serviços da cooperativa, fazendo valer seus prazos e cumprimento;</p>
+        <p><strong>IV.</strong>    determinar escalas e equipes de trabalho;</p>
+        <p><strong>V.</strong>    supervisionar o trabalho dos cooperados quando referentes às atividades cooperativas;</p>
+        <p><strong>VI.</strong>    conduzir o relacionamento com terceiros de natureza administrativa de interesse da cooperativa.</p>
+        <p><strong>VII.</strong>    zelar pela eficiência, eficácia e efetividade das decisões tomadas pelo Conselho de Administração;</p>
+        <p><strong>VIII.</strong>    executar, em conjunto com o Conselho de Administração, a admissão de cooperados;</p>
+        <p><strong>IX.</strong>    cumprir e fazer cumprir as deliberações das assembleias gerais;</p>
+        <p><strong>X.</strong>    substituir o presidente nos termos do estatuto.</p>
+        <p><strong>Art. 74</strong>. São atribuições do diretor financeiro:</p>
+        <p><strong>I.</strong>    abrir e movimentar, em conjunto com o presidente, as contas bancárias da cooperativa;</p>
+        <p><strong>II.</strong>    supervisionar as condições de guarda do patrimônio e estabelecer diretrizes de segurança;</p>
+        <p><strong>III.</strong>    supervisionar as atividades financeiras, estabelecendo rigoroso controle sobre os serviços que envolvem entrada e saída de numerário, crédito e cobrança, com assídua conferência dos saldos em caixa e bancos, boletins e registros contábeis;</p>
+        <p><strong>IV.</strong>    encarregar-se do planejamento financeiro e administrar o fluxo de caixa de forma a garantir os recursos para o bom funcionamento da cooperativa;</p>
+        <p><strong>V.</strong>    conduzir o relacionamento com terceiros de natureza financeira de interesse da cooperativa;</p>
+        <p><strong>VI.</strong>    manter-se informado e apto a informar aos demais integrantes da estrutura de governança e a todos os cooperados sobre a posição contábil da cooperativa;</p>
+        <p><strong>VII.</strong>    assessorar o presidente e o diretor administrativo em assuntos de sua área;</p>
+        <p><strong>VIII.</strong>    desempenhar as atribuições específicas que lhe forem determinadas pela Diretoria Executiva, pelo Conselho de Administração e pelo Regimento Interno da CooperPalmas.</p>
+        <h1 id="-center-strong-cap-tulo-iv-strong-center-"><center> <strong>CAPÍTULO IV </strong></center></h1>
+        <h2 id="-center-i-do-conselho-fiscal-i-center-"><center> <i>DO CONSELHO FISCAL</i></center></h2>
+        <p><strong>Art. 75.</strong> A administração da CooperPalmas será fiscalizada, assídua e minuciosamente, por Conselho Fiscal, constituído de seis conselheiros fiscais, três efetivos, primeiro, segundo e terceiro suplentes, todos cooperados, eleitos para mandato de um ano, pela assembleia geral, sendo permitida reeleição de apenas 1/3 dos seus membros.</p>
+        <p><strong>Art. 76.</strong> Para exercício de cargo do Conselho Fiscal, aplicam-se as condições de inelegibilidade referentes aos diretores e demais conselheiros.</p>
+        <p><strong>Art. 77.</strong> Constituem hipóteses de vacância automática do cargo eletivo, as mesmas condições definidas para vacância no Conselho de Administração.</p>
+        <p><strong>Art. 78.</strong> O Conselho Fiscal reunir-se-á mensalmente, em dia e hora previamente marcados e, extraordinariamente, sempre que necessário, por proposta de qualquer um de seus integrantes, observando-se em ambos os casos as seguintes normas:</p>
+        <p><strong>I.</strong>    as deliberações serão tomadas pela maioria de votos dos efetivos;</p>
+        <p><strong>II.</strong>    os assuntos tratados e as deliberações resultantes constarão em ata lavrada de folhas soltas assinada pelos presentes e armazenada em livro próprio;</p>
+        <p><strong>III.</strong>    as atas serão publicadas por e-mail e grupos de WhatsApp.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> As reuniões se realizarão sempre com a presença dos três membros, efetivos ou suplentes, previamente convocados.</p>
+        <p><strong>§ 2º</strong> Na primeira reunião, os membros efetivos do Conselho Fiscal escolherão entre si um coordenador para convocar e dirigir os trabalhos das reuniões e um secretário para lavrar as atas.</p>
+        <p><strong>§ 3º</strong> Na ausência do coordenador, os trabalhos serão dirigidos pelo conselheiro efetivo remanescente.</p>
+        <p><strong>§ 4º</strong> Os membros do Conselho que faltarem a duas reuniões consecutivas, sem justificativa, serão excluídos e substituídos pelo primeiro suplente e assim sucessivamente.</p>
+        </blockquote>
+        <p><strong>§ 5º</strong> Ocorrendo vacância de três ou mais vagas do Conselho Fiscal, o Conselho de Administração convocará assembleia geral para eleger os novos membros.</p>
+        <p><strong>Art. 79</strong>. Compete ao Conselho Fiscal:</p>
+        <p><strong>I.</strong>    examinar a situação dos negócios sociais, das receitas e das despesas, dos pagamentos e dos recebimentos, das operações em geral e de outras questões econômicas,</p>
+        <p><strong>II.</strong>    verificar a adequada e regular escrituração das receitas e despesas;</p>
+        <p><strong>III</strong>.    verificar, mediante exame dos livros, atas e outros registros, se as decisões adotadas estão sendo corretamente implementadas;</p>
+        <p><strong>IV.</strong>    inteirar-se do cumprimento das obrigações da cooperativa em relações fiscais, trabalhistas ou administrativas e dos cooperados e verificar se existem pendências;</p>
+        <p><em>*V.</em>    examinar os controles existentes relativos a valores e documentos sob custódia da
+        CooperPalmas;</p>
+        <p><strong>VI.</strong>    averiguar a atenção dispensada pelos colaboradores às reclamações dos cooperados;</p>
+        <p><strong>VII.</strong>    analisar balancetes mensais e balanços gerais, demonstrativos de sobras e perdas, assim como o relatório de gestão e outros, emitindo parecer sobre esses documentos para a assembleia geral;</p>
+        <p><strong>VIII</strong>.    exigir, da Diretoria Executiva ou de quaisquer de seus membros, relatórios específicos, declarações por escrito ou prestação de esclarecimentos, quando necessário;</p>
+        <p><strong>IX.</strong>    apresentar semestralmente ao Conselho de Administração e anualmente às assembleias gerais relatórios contendo conclusões e recomendações decorrentes da atividade fiscalizadora;</p>
+        <p><strong>X.</strong>    pronunciar-se sobre a regularidade dos atos praticados pelo Conselho de Administração e informar sobre eventuais pendências à assembleia geral;</p>
+        <p><strong>XI.</strong>    instaurar inquéritos e nomear comissões de averiguação; e</p>
+        <p><strong>XII.</strong>    convocar assembleia geral extraordinária nas circunstâncias previstas neste estatuto.</p>
+        <blockquote>
+        <p><strong>Parágrafo único.</strong> Para o exame das contas com vistas à emissão do parecer a ser submetido à assembleia geral de prestação de contas, o Conselho Fiscal poderá valer-se do assessoramento de contabilista legalmente habilitado ou de auditoria externa independente, se assim lhe convier.</p>
+        </blockquote>
+        <h1 id="-center-strong-cap-tulo-v-strong-center-"><center><strong>CAPÍTULO V</strong></center></h1>
+        <h3 id="-center-i-dos-rg-os-de-apoio-i-center-"><center><i>DOS ÓRGÃOS DE APOIO</i></center></h3>
+        <p><strong>Art. 80.</strong> São órgãos de apoio da estrutura de governança da CooperPalmas as Comissões temáticas, o Conselho de Ética e os Grupos de trabalho.
+        Parágrafo único. Nos órgãos de apoio, as atividades serão desenvolvidas voluntariamente, sem qualquer remuneração.</p>
+        <p><strong>Art. 81</strong>. As Comissões Temáticas serão coordenadas pelos membros do Conselho de Administração, conforme dispõem os artigos 52 a 60 deste estatuto.</p>
+        <p><strong>Art. 82.</strong> Os membros do Conselho de Ética deverão ser eleitos na mesma assembleia de eleição do Conselho de Administração e Diretoria Executiva.
+        Parágrafo único. Os conselheiros serão cooperados com ilibada conduta, respeitabilidade perante a comunidade e conhecimento adequado ao exercício das funções.</p>
+        <p><strong>Art. 83.</strong> Caberá ao Conselho de Ética:</p>
+        <p><strong>I.</strong>    Apoiar o Conselho de Administração nas apurações de condutas de cooperados, contrárias às disposições estatutárias, regimentais e legais;</p>
+        <p><strong>II.</strong>    Analisar e emitir parecer indicativo quando deliberado pela Assembleia ou quando solicitado pelo Conselho de Administração;</p>
+        <p><strong>III.</strong>    Analisar previamente os pedidos de eliminação e exclusão de cooperados;</p>
+        <p><strong>IV.</strong>    Outras atividades designadas pelo Regimento Interno.</p>
+        <p><strong>Art. 84</strong>. Os Grupos de Trabalho serão criados sempre de acordo com a necessidade de atuação em determinadas áreas e assuntos e serão formados por atos de ofício do Conselho de Administração ou por decisão das assembleias gerais.
+        Parágrafo único. Os Grupos de Trabalho apresentarão relatórios de suas atividades com conclusões fundamentadas que serão objeto de deliberação pelas instâncias decisórias da CooperPalmas.</p>
+        <blockquote>
+        <p><strong><em>TÍTULO VIII</em></strong></p>
+        <h6 id="-da-reponsabilidade-dos-ocupantes-de-cargos-dos-conselhos">- DA REPONSABILIDADE DOS OCUPANTES DE CARGOS DOS CONSELHOS</h6>
+        </blockquote>
+        <p><strong>Art. 85.</strong> Os componentes do Conselho de Administração (Coordenadores e Diretoria Executiva) e do Conselho Fiscal, bem como o liquidante, equiparam-se aos administradores das sociedades anônimas para efeito de responsabilidade criminal.</p>
+        <p><strong>Art. 86.</strong> Os membros efetivos do Conselho Fiscal são solidariamente responsáveis pelos atos e fatos irregulares praticados pela Diretoria Executiva, desde que, no exercício da fiscalização, revelem-se omissos, displicentes e com ausência de acuidade de pronta advertência ao Conselho de Administração e, na inercia destes, de oportuna e conveniente denúncia à assembleia geral.</p>
+        <p><strong>Art. 87.</strong> Sem prejuízo da ação que couber ao cooperado, a CooperPalmas, representada pelo cooperado escolhido em assembleia geral, terá direto de ação contra os administradores, para promover sua responsabilização.</p>
+        <p><strong>Art. 88.</strong> Os administradores da CooperPalmas respondem solidariamente pelas obrigações assumidas durante a gestão, até que se cumpram.
+        Parágrafo único. A responsabilidade solidária se circunscreverá ao montante dos prejuízos causados.</p>
+        <h1 id="-center-strong-t-tulo-ix-strong-center-"><center><strong>TÍTULO IX</strong></center></h1>
+        <h3 id="-center-i-do-processo-eleitoral-i-center-"><center><i> DO PROCESSO ELEITORAL </i></center></h3>
+        <p><strong>Art. 89.</strong> As eleições para os cargos de membros do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal serão regidas por Regulamento Eleitoral, que fará parte do Regimento Interno.</p>
+        <p><strong>Art. 90.</strong> O Conselho de Administração convocará assembleia geral ordinária, ou excepcionalmente extraordinária, dos cooperados, com antecedência mínima de sessenta dias do fim dos mandatos do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal, para eleger um Comitê Eleitoral, composto de três membros, para coordenar as atividades à eleição dos diretores executivos e dos conselheiros da CooperPalmas.
+        Parágrafo único. Os membros do Comitê Eleitoral deverão estar em situação regular frente às suas obrigações estatutárias e regimentais e não poderão candidatar-se a cargos eletivos.</p>
+        <p><strong>Art. 91</strong>. Compete ao Comitê Eleitoral as seguintes tarefas:</p>
+        <p><strong>I.</strong>    aplicar as normas e as instruções gerais das eleições previstas no Regulamento Eleitoral da CooperPalmas;</p>
+        <p><strong>II.</strong>    divulgar, com o apoio do Comitê de Comunicação da CooperPalmas, as normas do processo eleitoral para os cooperados;</p>
+        <p><strong>III.</strong>    receber as inscrições das candidaturas aos cargos eletivos;</p>
+        <p><strong>IV.</strong>    registrar as candidaturas mediante a verificação das condições de elegibilidade;</p>
+        <p><strong>V.</strong>    recepcionar eventuais denúncias e pedidos de impugnação de cooperados contra qualquer candidatura;</p>
+        <p><strong>VI.</strong>    impugnar as candidaturas daqueles que não estiverem em situação regular com as obrigações estatutárias e regimentais da CooperPalmas;</p>
+        <p><strong>VII.</strong>    receber, examinar e se pronunciar sobre os pedidos de recursos das candidaturas denunciadas e impugnadas;</p>
+        <p><strong>VIII.</strong>    dar publicidade aos cooperados das candidaturas registradas e validadas;</p>
+        <p><strong>IX</strong>.    coordenar o processo eleitoral nos termos do Regulamento Eleitoral;</p>
+        <p><strong>X.</strong>    presidir os trabalhos da assembleia geral extraordinária convocada pelo Conselho de Administração que debater as propostas das candidaturas;</p>
+        <p><strong>XI.</strong>    receber, examinar e se pronunciar sobre denúncias de irregularidades no decorrer do processo eleitoral;</p>
+        <p><strong>XII.</strong>    examinar e decidir sobre pedidos de retiradas e de substituição de candidaturas;</p>
+        <p><strong>XIII.</strong>    organizar a votação, presidir a mesa receptora e a junta apuradora, com a participação de representantes de todas as candidaturas;</p>
+        <p><strong>XIV.</strong>    proclamar os resultados da eleição;</p>
+        <p><strong>XV.</strong>    lavrar a ata das eleições;</p>
+        <p><strong>XVI.</strong>    anunciar dia, hora e local para a posse dos novos integrantes do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal eleitos, no prazo máximo de 30 dias após a eleição;</p>
+        <p><strong>XVII.</strong>    empossar os eleitos na cerimônia de posse.
+        Parágrafo único. As candidaturas que tiverem seus registros impugnados pelo Comitê Eleitoral poderão apresentar recursos, em instância final, ao Conselho de Administração da CooperPalmas.</p>
+        <p><strong>Art. 92.</strong> As eleições para os cargos do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal se realizarão em assembleia geral, que terá início em um sábado para apresentação e discussão das propostas das candidaturas e continuará no dia seguinte com a votação em urna fechada, no horário das 8h às 18h.</p>
+        <h1 id="-center-strong-t-tulo-ix-strong-center-"><center><strong>TÍTULO IX </strong></center></h1>
+        <h3 id="-center-i-da-dissolu-o-e-da-liquida-o-i-center-"><center><i>DA DISSOLUÇÃO E DA LIQUIDAÇÃO </i></center></h3>
+        <p><strong>Art. 93.</strong> A CooperPalmas dissolver-se-á voluntariamente, quando assim deliberar em assembleia geral extraordinária, se os cooperados presentes não se dispuserem a assegurar sua continuidade.</p>
+        <blockquote>
+        <p><strong>§ 1º</strong> Além da deliberação espontânea da assembleia geral extraordinária, de acordo com os termos deste artigo, acarretarão a dissolução da cooperativa:</p>
+        </blockquote>
+        <p><strong>I.</strong>    a alteração de sua forma jurídica;</p>
+        <p><strong>II.</strong>    a redução do número mínimo de cooperados ou do capital social se, até a assembleia geral subsequente, realizada em prazo não inferior a seis meses, não forem restabelecidas as condições mínimas de número de cooperados e de capital social;</p>
+        <p><strong>III.</strong>    o cancelamento da autorização para funcionar;</p>
+        <p><strong>IV.</strong>    a paralisação das atividades por mais de 120 dias corridos.</p>
+        <blockquote>
+        <p><strong>§ 2º</strong> Nas hipóteses previstas no parágrafo anterior, a dissolução da cooperativa poderá ser promovida judicialmente, a pedido de qualquer cooperado, caso a assembleia geral não a realize por iniciativa própria.</p>
+        </blockquote>
+        <p><strong>Art. 94.</strong> Quando a dissolução for deliberada pela assembleia geral, será nomeado um liquidante e um Conselho Fiscal, composto de três membros, para procederem à liquidação da CooperPalmas.</p>
+        <blockquote>
+        <p><strong>Parágrafo único.</strong>  A assembleia geral, nos limites das atribuições que lhe cabem, poderá, a qualquer tempo, destituir o(s) liquidante(s) e os membros do Conselho Fiscal, designando os respectivos substitutos.</p>
+        </blockquote>
+        <p><strong>Art. 95.</strong> O processo de liquidação somente poderá ser iniciado, se empossados o(s) liquidante(s) e os membros do Conselho Fiscal, após registro de ata da assembleia geral que deliberou sobre a dissolução da CooperPalmas na Junta Comercial do Distrito Federal e demais órgãos competentes.</p>
+        <p><strong>Art. 96.</strong> Não poderá o liquidante, sem autorização da assembleia geral, gravar de ônus os móveis e imóveis, contrair empréstimos, salvo quando indispensáveis para pagamento de obrigações inadiáveis, nem prosseguir, embora para facilitar a liquidação, na atividade social.</p>
+        <h1 id="-center-strong-t-tulo-x-strongr-center-"><center><strong>TÍTULO X</strongr></center></h1>
+        <h3 id="-center-i-das-disposi-es-gerais-e-transit-rias-i-center-"><center><i>DAS DISPOSIÇÕES GERAIS E TRANSITÓRIAS</i></center></h3>
+        <p><strong>Art. 97.</strong> Não é permitida a contratação de empresas prestadoras de serviços constituídas por pessoas com qualquer grau de parentesco em linha reta, colateral, cônjuge ou companheiro(a) com membros do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal.</p>
+        <p><strong>Art. 98</strong>. Os cooperados eleitos para o Conselho de Administração, para a Diretoria Executiva, para o Conselho Fiscal e para o Conselho de Ética da primeira gestão da CooperPalmas exercerão suas funções de modo honorífico, sendo apenas reembolsadas as despesas com as atividades de representação, quando houver.</p>
+        <p><strong>Art. 99.</strong> Os integrantes da primeira composição do Conselho de Administração, da Diretoria Executiva e do Conselho Fiscal serão eleitos por meio de uma chapa única, que será formada a partir de pré-candidaturas de cooperados da CooperPalmas.</p>
+        <p><strong>Art. 100.</strong> Os cooperados interessados em participar do processo de formação da chapa única poderão inscrever-se aos cargos previstos neste estatuto.
+        Parágrafo único. O processo de formação da chapa única será coordenado por uma Comissão de Transição eleita na assembleia de cooperados da CooperPalmas.</p>
+        <p><strong>Art. 101.</strong> Por ocasião da data de realização da assembleia geral de constituição da CooperPalmas, o prazo de mandato do Conselho de Administração, Diretoria Executiva e Conselho de Ética terminarão na assembleia geral ordinária de 2020 e o prazo de mandato do Conselho Fiscal terminará na assembleia geral ordinária de 2019.</p>
+        <p><strong>Art. 102</strong>. Na primeira eleição da CooperPalmas, os eleitos para o Conselho de Administração, para a Diretoria Executiva e para o Conselho de Ética tomarão posse imediata.</p>
+        <p><strong>Art. 103</strong>. O disposto no art. 88 deste estatuto não se aplica à eleição de constituição da
+        CooperPalmas.</p>
+        <p><strong>Art. 104.</strong> Os controles, apurações e movimentações financeiras da CooperPalmas serão calculados com base na NBC T 10.8.</p>
+        <p><strong>Art. 105.</strong> Os casos omissos neste estatuto serão submetidos à consideração da assembleia geral.</p>
+        <h3 id="-center-i-bras-lia-df-21-de-outubro-de-2018-center-i-"><center><i>Brasília (DF), 21 de outubro de 2018.<center></i></h3>
+        <h3 id="-center-i-claudismar-zupiroli-center-i-"><center><i>Claudismar Zupiroli<center></i></h3>
+        <h3 id="-center-i-oab-df-n-12-250-center-i-"><center><i>OAB/DF nº 12.250<center></i></h3>
+        <hr>
+        <p>1 - Carmen Mee Alonso, brasileira, atriz, solteira, residente à SQN 205, Bloco L, Apartamento 305, Brasília (DF), CEP 70843-120, RG 253.867-4, SSP/DF, CPF
+        035.478.911-24, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>2 - Carmen Regina Mendes de Araújo Correia, brasileira, engenheira agrônoma, divorciada, residente à SQN 206, Bloco C, Apartamento 204, Brasília (DF), CEP 70843- 030, RG 863.274, SSP/ GO, CPF 216.668.061-53, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>3 - Deraldo Rodrigues Goulart, brasileiro, jornalista, separado judicialmente, residente à CCSW 1, Lote 1, Bloco 1, Apartamento 603, CEP 70680-153, RG 802.754.878-6, SSP/RS, CPF 297.803.060-72, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>4 - Edna Vilas Boas Silva, brasileira, gestora pública, solteira, residente à Rua 8, Quadra 01, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF), CEP 73100-570, RG 183.365-5, SSP/DF, CPF 699115171-87, que subscreverá 15.000 cotas
+        e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas. </p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>5 - Elisângela Sanches Januário, brasileira, solteira, servidora pública, residente à SHCES 1409, Bloco J, Apartamento 312, Cruzeiro Novo (DF), CEP 70.658-500, Carteira Nacional de Habilitação 01.485.705.590, CPF 298.538.248-33, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>6 - Gean Carlo Cassimiro de Moura, brasileiro, união estável, gerente de Riscos de Mercado, Liquidez e Gerenciamento de Capital, residente à Quadra 101, Lote 6, Praça Tiê, Edifício Eliane Fleury, Apartamento 813, Águas Claras (DF), CEP 71907180, RG 140.641-9, SSP/DF, CPF 696.479.091-87, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>7 - Iraê Sassi, brasileiro, casado, tradutor público e intérprete comercial, residente à Rua 19, Chácara 846, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF), CEP 73.100-570, RG 14.253-7, SESP/DF, CPF 614.535.528-04, que subscreverá
+        30.000 cotas e integralizará o valor de R$ 30.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>8- Ivete Maria Rodrigues Lordello, brasileira, divorciada, assistente social aposentada, residente à Rua 19, Chácara 804, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF), CEP 73100-570, RG 151.950-9, SSP/DF, CPF 15.884.251-
+        49, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>9 - João Domingos Machado Del Frari, brasileiro, divorciado, engenheiro, SQN 209, Bloco E, Apartamento 304, Brasília (DF), CEP 70.854-050, RG 102.492.507-3, SSP/RS, CPF 196.497.460-72, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>10 - Joaquim Dias Nogueira, brasileiro, casado engenheiro agrônomo, residente no SMLN, MI Trecho 13, Condomínio Porto Seguro, Rua 2, Casa 36C, Lago Norte (DF), CEP 71.540-135, RG 16.823.675-8, SSP/SP, CPF 058.340.088-44 que subscreverá 30.000
+        cotas e integralizará o valor de R$ 30.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>11 - José Antônio Pimentel, brasileiro, empresário, casado, residente à Rua 19, Quadra 3, Lote 11, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF),  CEP  73.100-570,  RG  086.740.563-5,  SSP/BA,  CPF  917.655.365-53,  que
+        subscreverá 30.000 cotas e integralizará o valor de R$ 30.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>12 - Josemirte Fernandes de Medeiros, brasileira, viúva, bancária, residente no SHIN, CA 08, Lote 01, Torre 2, Apartamento 314, Lago Norte (DF), CEP 71.503-508, RG 80.759-1, SSP/DF, CPF 350.459.651-15, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>13 - Laert Teixeira, brasileiro, radialista, casado, residente à Rua Ipê Amarelo, Quadra 201, Lotes 4 a 11, Bloco A, Apartamento 803, Águas Claras (DF), CEP 71.937-540, RG 1.550.385, SSP/MG, CPF 284.819.096-53, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>14 - Maria dos Prazeres da Silva Diniz, brasileira, casada, assistente social / servidora pública, residente à Rua 19, Quadra 10, Lote 21, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF),CEP 73100-570, RG 103.351-5, SSP/PE, CPF 081.414.364-49, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>15 - Mirian Lauro do Nascimento, brasileira, autônoma, divorciada, residente à Rua 19, Chácara 787, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF), RG 70.618-4, SSP/ DF, CPF 388.711.814-68, que subscreverá 45.000 cotas e integralizará o valor de R$ 45.000,00 no capital social da CooperPalmas</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>16 – Ronaldo de Moura, brasileiro, divorciado, jornalista / empresário, residente à Rua 19, Quadra 850 A, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF), CEP 73.100-570, RG 22.905.162-5, SSP/SP, CPF 183.032.851-49, que subscreverá
+        15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>17 - Rosimeire Soares Dantas Pereira, brasileira, casada, residente à Rua 19,Chácara 842-A, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF), CEP 73100-570, RG 355.103-0, SSP/GO, CPF-707.014.231-53, que subscreverá 15.000
+        cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>18 – Rossana Martins da Silva, brasileira, solteira, gestora educacional, residente à Rua 19, Quadra 850, Lote 12, CEP 73100-570, Palmas do Lago Oeste, Núcleo Rural do Lago Oeste, Sobradinho (DF), CEP 73100-570, RG 103.730.424-1, SSP/RS, CPF
+        628.645.800-04, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>19 - Susan Mariana Chaves Fernandes, brasileira, casada, professora, residente no Condomínio Contagem, Módulo A, Casa 1, Sobradinho II (DF), RG 205.744-8, SSP/DF, CPF 898.575.691-53, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <p>20 - Teresa Cristina Costa Machado, brasileira, solteira, jornalista, residente à SQN 210, Bloco H, Apartamento 106, Brasília (DF), CEP 70862-080, RG 802.061.440-3, SSP/RS, CPF 408.030.150-20, que subscreverá 15.000 cotas e integralizará o valor de R$ 15.000,00 no capital social da CooperPalmas.</p>
+        <h6 id="-assinatura-"><em>Assinatura:</em></h6>
+        <hr>
+        <br><br>
+        <br>
+        <br>
+        <br>
+
+  </main><!-- End #main -->
+
+ 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../templates/assets/js/main.js"></script>
+{% endblock %}
+</body>
+
+  <footer class="bg-light text-center text-lg-start">
+<!-- Copyright -->
+<div class="text-center p-3" style="background-color: rgba(33, 123, 71, 0.8);">
+© 2022 Copyright:
+<a class="text-dark" href="">CooperPalmas</a>
+</div>
+</footer>
+</html>

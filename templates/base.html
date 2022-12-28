@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CooperPalmas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+
+
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.4s;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
+    font-family: 'Poppins', sans-serif;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+nav{
+  background:  rgba(33, 123, 71, 0.8);
+  height: 97px;
+  width: 100%;
+  background-clip:content-box;
+  align-self:flex-end;
+  
+}
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+  text-decoration: none;  
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline;
+  line-height: 80px;
+  margin: 0 5px;
+
+  
+
+}
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: capitalize;
+  
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+a.active,a:hover, a:visited{
+  background-color: #164A4F;
+  transition: .5s;
+  color:rgb(205, 206, 203);
+  text-decoration: none;
+}
+.checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+  text-decoration: none;
+}
+#check{
+  display: none;
+}
+@media (max-width: 952px){
+  label.logo{
+    font-size: 30px;
+    padding-left: 50px;
+    text-decoration: none;
+  }
+  nav ul li a{
+    font-size: 16px;
+    text-decoration: none;
+  }
+}
+@media (max-width: 858px){
+  .checkbtn{
+    display: block;
+  }
+  ul{
+    position:fixed;
+    width: 100%;
+    height: 100vh;
+    background: #164A4F;
+    top: 80px;    
+    display: block;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+    text-decoration: none;
+    z-index: 2;
+  }
+  nav ul li{
+    display:block;
+    margin: 20px 0;
+    line-height: 50px;
+    z-index: 2;
+  }
+  nav ul li a{
+    font-size: 20px;
+    text-decoration: none;
+    z-index: 2;
+  }
+  a:hover,a.active{
+    background:none;
+    background-color:  rgba(19, 87, 48, 0.8);
+    z-index: 2;
+
+
+  }
+  #check:checked ~ ul{
+    left: 0;
+  }
+}
+
+
+.home{
+    width: 100%;
+    height: 100vh;
+    background-color: #ddd;
+}
+
+/* Medai qurey section */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    .container{
+        margin: 0;
+    }
+    
+}
+
+
+
+
+@media screen and (max-width:768px) {
+    
+    .container{
+        margin: 0;
+    }
+}
+  
+.masthead {
+            background: transparent;
+            height: auto;
+            padding-bottom: 15px;
+            /*box-shadow: 0 16px 48px #707479;*/
+            padding-top: 10px;
+            text-align: center;
+            align-self: center;
+            color: #FFF
+        }
+
+
+        body {
+                    
+                    font-family: "Roboto", sans-serif;
+                    font-size: 17px;
+                    background-color: rgb(205, 206, 203);
+                    height: 100vh;
+                    background: rgb(205, 206, 203);
+                   ;
+                    
+        }
+        
+                .shadow {
+                    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+                    box-sizing: content-box;
+                }
+                .btn-danger {
+                    color: #fff;
+                    background-color: #db2777;
+                    border-color: #dc281e;
+                    border-radius: 20px;
+                    font-size:large;
+                    align-self:center;
+                    align-content: center;
+                    display: inline-block;
+                    
+                }
+
+
+    </style>
+<header>
+    <nav class="navbar-fixed-top">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        
+        <label class="logo">
+            <a href="{% url 'home' %}" style="text-decoration: none; font-weight:9"><img src='https://cooperpalmas-s3-bucket.s3.us-east-2.amazonaws.com/static/Logo.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEP3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXNhLWVhc3QtMSJHMEUCIQCNTqf%2BqK60VNQw%2FR2tFs3U47bxFZD6WxMPbiW41gadCQIgIGzw3tQW5wIo3DfniC%2BagEh65O3wzXd%2FKASIBL8d8jgq5AIIRhACGgw4MDA1MjM3NTQ4MTEiDE9DtW9yzMpJK2gs4SrBAksPSFhsRNdqiBMDZB5Ik0FhHvMNiHsiRSERGpq8MG85HxseMQqJFwU5wPCJOF7cVvnjOPrSeljOJfr577DUHqwWXpUbHELsrGUmlXrhnm7Rf45GR1Ohq1O0T2CyLY1QIYmX33mGOqn%2FByK0FIWlDboLbNT4trJ35CN9fqqTNFwAa6QlHhShtUV02cCV5oRuo%2FfRO6cLeCfLq2lhBGZDkEsZi9f25LW4m7C%2FOTyFxistrZIVxH4KIRzjDO0sP9YR8IMP2ohgJBBEMVeks819nQgv3vo9rUDnRsYVOUaWvUBJ%2FeL8dkdJXc46hp4LghgoV0Xaif0kXjdsipOrB6sTW0rJZ7sZ0N956VcSBVFR3wPrwMGvTvTJxtd6K1IHoTa%2F0Z8b6NO0vidk0Jeb0ojzqNLX%2F1dmdr45ccELHU0tsuGYsTCk87CdBjqzAsjbUOZCp2AXPnwCv5bp5osgxTxMFNLPdG81vBjgAEsZm0kuzP0wVE6TF%2FjkTUelLdJNddlizrvYASjXNLB2C1O2nW2HuCmqmio8bqrc2jNHVAaGe7m87dVkKXsH4sgveQxpqBL1XZ9tEXk7Gdvp3FR%2B1DDpQqxRyLAu6YG38BBOBzIYHiRElVddLi7pPtdfNo%2BBLGfXODRK9bgto20F8pSpP5Cohcvl18Zgv1g6V0YdRCIGyYOTaK9Cbf12gGXih3R3%2B4bXe5ohUntFrjRmeE7zjMH1CpjRhMBQ9aU3HtKtse3BLQE5d6gmysNyvLvzJgnOeQmFbLklAUQYMOc2Hf0uiHnYNfZq3v%2FtrvCYMytjHOpQH0wNgP%2BLNF0HrH18IaBEWf7Kjlxf1NONHolYSM0hn%2FM%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221228T182948Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIA3UYXPDU55LKFORLJ%2F20221228%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Signature=49ebaaaa38a5f5b442d1799aac4902c52232315c42cde635c045d2838ad5e871'
+               height="80" width="80"/>
+           <!--<img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/80d85673021875.5bfc1395724f0.png" width="100px" height="70px">--> </label>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'sobre' %}">Sobre</a></li>
+            <li><a href="{% url 'regimentos' %}">Regimento</a></li>                
+            <li><a href="{% url 'estatuto' %}">Estatuto</a></li>            
+            <li><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="/admin">Admin</a></li>
+      </nav>
+      </header>
+<body>
+     
+  
+        
+       
+        {% block content %}
+        
+    
+
+        {% endblock content %}
+
+    <!-- Copyright -->
+
+        <!-- Footer > 
+        </footer-->
+    </body>
+
+</html>

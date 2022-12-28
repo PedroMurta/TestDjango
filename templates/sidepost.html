@@ -1,0 +1,53 @@
+{% block sidebar %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+            box-sizing: inherit;
+        }
+
+</style>
+
+<!-- Sidebar Widgets Column -->
+
+<div class="col-md-4 float-right ">   
+    
+<div class="card my-4">
+    <h5 class="card-header">Últimos Posts</h5>  
+    <div  class="card-body">
+        
+        <p class="card-text"> {{ post.title}} </p>  
+        
+        
+        
+                <a href="{% url 'post_detail' post.slug  %}"
+                
+           class="btn btn-danger">Saiba!</a>
+           
+    </div>
+    
+    
+</div>
+
+<div class="card my-4">
+    <h5 class="card-header">Últimos Posts</h5>  
+    <div  class="card-body">
+        
+        <p class="card-text"> {{ post.title}} </p>  
+        
+        
+        
+                <a href="{% url 'post_detail' post.slug  %}"
+                
+           class="btn btn-danger">Saiba!</a>
+           
+    </div>
+    
+    
+</div>
+
+</div>
+
+
+
+{% endblock sidebar %}

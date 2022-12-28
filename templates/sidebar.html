@@ -1,0 +1,50 @@
+{% block sidebar %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+<div class="card my-4">
+        <h4 class="card-header" align="center" >Categorias</h4>
+    <div class="card-body">
+      <p>
+        <a href="{% url 'news' %}"
+           class="btn btn-danger">Notícias</a></p>
+
+           <p>
+                <a href="{% url 'feira' %}"
+                   class="btn btn-danger">Feira</a></p>
+
+                   <p>
+                        <a href="{% url 'financeiro' %}"
+                           class="btn btn-danger">Financeiro</a></p>
+
+                           <p>
+                                <a href="{% url 'transparencia' %}"
+                                  class="btn btn-danger">Transparência</a></p>
+                            
+                                  <p>
+                                        <a href="{% url 'eventos' %}"
+                                          class="btn btn-danger">Eventos</a></p>
+
+                                          <p>
+                                                <a href="{% url 'informativos' %}"
+                                                  class="btn btn-danger">Informativos</a></p>
+
+                                                  <p>
+                                                      <a href="{% url 'blog' %}"
+                                                        class="btn btn-danger">Todas as Notícias</a></p>
+    </div>
+    
+</div>
+
+
+
+</div>
+
+{% endblock sidebar %}

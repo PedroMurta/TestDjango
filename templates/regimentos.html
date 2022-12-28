@@ -1,0 +1,1304 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>Our Story - MeFamily Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="../templates/assets/css/style.css" rel="stylesheet">
+  
+  </head>
+<style>
+
+    .story-intro .content h3 {
+      font-weight: 600;
+      font-size: 26px;
+    }
+    
+    .story-intro .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .story-intro .content ul li {
+      padding-bottom: 10px;
+    }
+    
+    .story-intro .content ul i {
+      font-size: 20px;
+      padding-right: 4px;
+      color: #006fbe;
+    }
+    
+    .story-intro .content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    
+    
+    .featured-members .content+.content {
+      margin-top: 100px;
+    }
+    
+    .featured-members .content h3 {
+      font-weight: 600;
+      font-size: 26px;
+    }
+    
+    .featured-members .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .featured-members .content ul li {
+      padding-bottom: 10px;
+    }
+    
+    .featured-members .content ul i {
+      font-size: 20px;
+      padding-right: 4px;
+      color: #006fbe;
+    }
+    
+    .featured-members .content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /*--------------------------------------------------------------
+    # Members Cards
+    --------------------------------------------------------------*/
+    .containerMember {
+      margin-top: 100px;
+    }
+    
+    .containerMember .row .col-lg-4 {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .card {
+      position: relative;
+      padding: 0;
+      margin: 0 !important;
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 280px;
+      max-height: 340px;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    
+    }
+    
+    .card .card-image {
+      width: 100%;
+      max-height: 340px;
+    }
+    
+    .card .card-image img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: cover;
+    }
+    
+    .card .card-content {
+      position: absolute;
+      bottom: -180px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      min-height: 140px;
+      width: 100%;
+      transition: bottom .4s ease-in;
+      box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .card:hover .card-content {
+      bottom: 0px;
+    }
+    
+    .card:hover .card-content h5,
+    .card:hover .card-content h5 {
+      transform: translateY(10px);
+      opacity: 1;
+    }
+    
+    .card .card-content h5,
+    .card .card-content h5 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-align: center;
+      transition: 0.8s;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-40px);
+      transition-delay: 0.2s;
+    }
+    
+    .card .card-content h5 {
+      transition: 0.5s;
+      font-weight: 200;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+    }
+    
+    .card .card-content .social-icons {
+      list-style: none;
+      padding: 0;
+    }
+    
+    
+    .card .card-content .social-icons li {
+      margin: 10px;
+      transition: 0.5s;
+      transition-delay: calc(0.15s * var(--i));
+      transform: translateY(50px);
+    }
+    
+    
+    .card:hover .card-content .social-icons li {
+      transform: translateY(20px);
+    }
+    
+    .card .card-content .social-icons li a {
+      color: #fff;
+    }
+    
+    .card .card-content .social-icons li a span {
+      font-size: 1.3rem;
+    }
+    
+    @media(max-width: 991.5px) {
+      .container {
+          margin-top: 20px;
+      }
+    
+      .container .row .col-lg-4 {
+          margin: 20px 0px;
+      }
+    }
+    
+    /*--------------------------------------------------------------
+    # Event List
+    --------------------------------------------------------------*/
+    .event-list .card {
+      border: 0;
+      padding: 0 30px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .event-list .card-img {
+      width: calc(100% + 60px);
+      margin-left: -30px;
+      overflow: hidden;
+      z-index: 9;
+      border-radius: 0;
+    }
+    
+    .event-list .card-img img {
+      max-width: 100%;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .event-list .card-body {
+      z-index: 10;
+      background: #fff;
+      border-top: 4px solid #fff;
+      padding: 30px;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      margin-top: -60px;
+      transition: 0.3s;
+    }
+    
+    .event-list .card-title {
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #24325d;
+    }
+    
+    .event-list .card-title a {
+      color: #24325d;
+      transition: 0.3s;
+    }
+    
+    .event-list .card-text {
+      color: #5e5e5e;
+    }
+    
+    .event-list .read-more a {
+      color: #777777;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+    
+    .event-list .read-more a:hover {
+      color: #006fbe;
+    }
+    
+    .event-list .card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .event-list .card:hover .card-body {
+      border-color: #006fbe;
+    }
+    
+    .event-list .card:hover .card-body .card-title a {
+      color: #006fbe;
+    }
+    
+    /*------------------------*/
+    p {
+      color: #1d284b; 
+      font-size: 24px;
+      font-family: Poppins, sans-serif;
+    }
+    
+    </style>
+<body>
+
+  <!-- ======= Header ======= -->
+
+
+  <header class="masthead">
+    <div class="overlay">            
+    <h1 align="center" style="color: #6f8f72; font-size: 36px; font-family: Poppins, sans-serif;">
+              
+    </h1>
+    <img src="" alt="">
+   
+    </div>
+
+    <br>
+    <br>
+</header>
+
+  
+
+  <main id="main">
+
+    <header class="masthead">
+      <div class="overlay">            
+      <h1 align="center" style="color: #6f8f72; font-size: 36px; font-family: Poppins, sans-serif;">
+          Regimento  Interno     
+      </h1>
+      <img src="" alt="">
+     
+      </div>
+  
+      <br>
+      <br>
+  </header>
+
+ 
+    <section id="story-intro" class="story-intro">
+      <div class="container">
+
+        <h1 id="t-tulo-i" align="center">TÍTULO I</h1>
+<h5 id="das-disposi-es-preliminares" align="center">DAS DISPOSIÇÕES PRELIMINARES</h5>
+<br>
+<p><strong>Art. 1º</strong> A Cooperativa Agroambiental Palmas do Lago Oeste (CooperPalmas) rege-se por seu
+Estatuto Social e pelo presente Regimento Interno, além das disposições legais aplicáveis.</p>
+<p><strong>Parágrafo único.</strong> </p>
+<blockquote>
+<p>A CooperPalmas fundamenta sua existência no segmento
+agroambiental e se baseia nos princípios e atitudes de respeito ao ser humano, ao
+meio ambiente e a todas as formas de vida.</p>
+</blockquote>
+<p><strong>Art. 2º</strong> O presente Regimento Interno, aprovado pela Assembleia Geral Extraordinária
+realizada nos dias 9 e 16 de fevereiro de 2020, dispõe sobre o funcionamento cotidiano
+e as normas de conduta no âmbito da CooperPalmas, para cumprimento das finalidades
+estatutárias e para a preservação e manutenção da harmonia, comodidade, tranquilidade,
+conservação ambiental e segurança de todos os(as) cooperados(as) e moradores(as) do
+espaço territorial da cooperativa.</p>
+<p><strong>Art. 3º</strong> Para os efeitos deste Regimento Interno são consideradas as seguintes categorias
+de pessoas:</p>
+<blockquote>
+<p><strong>I.</strong> cooperado(a);</p>
+<p><strong>II.</strong> familiar do(a) cooperado(a);</p>
+<p><strong>III.</strong> morador(a), considerado todo(a) aquele(a) que ocupe os espaços privados de
+cooperado(a), por qualquer tipo de contrato;</p>
+<p><strong>IV.</strong> funcionário(a), aquele que possui vínculo empregatício com a cooperativa e/ou
+com cooperado(a) e/ou morador(a);</p>
+<p><strong>V.</strong> convidado(a), qualquer pessoa que adentre à CooperPalmas a convite de
+cooperado(a) e/ou morador;</p>
+<p><strong>VI.</strong> prestador(a) de serviço, aquele que adentre à cooperativa para prestar serviços à
+cooperado(a), morador(a) ou à própria CooperPalmas.</p>
+<p><strong>Art. 4º</strong> Os objetivos da CooperPalmas estão descritos no Estatuto Social, devendo ser
+rigorosamente cumpridos por todos(as) os(as) cooperados(as).</p>
+</blockquote>
+<br><br>
+<h1 id="t-tulo-ii" align="center">TÍTULO II</h1>
+<h5 id="das-normas-program-ticas-do-estatuto-social" align="center">DAS NORMAS PROGRAMÁTICAS DO ESTATUTO SOCIAL</h5>
+<br><br>
+<h2 id="-cap-tulo-i-"><strong><center>CAPÍTULO I</center></strong></h2>
+<h5 id="-dos-as-cooperados-as-"><strong><center>DOS(AS) COOPERADOS(AS)</center></strong></h5>
+<br><br>
+<p><strong>Art. 5º</strong> É responsabilidade de todo(a) cooperado(a) conhecer e respeitar este Regimento
+Interno, assim como informar, dar ciência e exigir o cumprimento de seus dispositivos
+e normas por seus familiares, convidados(as), funcionários(as) e respectivos(as)
+dependentes, visitantes ou residentes no espaço territorial da CooperPalmas.</p>
+<p><strong>Art. 6º</strong> A atualização dos dados cadastrais, em especial endereço, telefone e e-mail, é
+de responsabilidade do(a) cooperado(a) e deve ser rigorosamente cumprida para evitar
+interrupção da comunicação com a CooperPalmas.</p>
+<p><strong>Art. 7º</strong> O(A) cooperado(a) deverá, obrigatoriamente, comunicar à administração da
+CooperPalmas sobre a locação ou empréstimo de seu lote.</p>
+<blockquote>
+<p><strong>§ 1º</strong> Para locação ou empréstimo do(s) lote(s) relacionado(s) à sua(s) quota(s) parte(s)
+o(a) cooperado(a) adimplente deverá emitir declaração para a CooperPalmas se
+responsabilizando pelos atos praticados pelo locatário ou detentor por empréstimo,
+seus familiares, convidados e outros;</p>
+<p><strong>§ 2º</strong> Não será admitida a locação de lotes e residências de cooperado(as) inadimplentes;</p>
+<p><strong>§ 3º</strong> Não será permitida a entrada de mudanças de locatários(as) sem a prévia
+comunicação à administração da CooperPalmas.</p>
+</blockquote>
+<p><strong>Art. 8º</strong> As comunicações oficiais com a CooperPalmas poderão ser feitas pessoalmente,
+na sua sede administrativa, nos livros de reclamações e sugestões na portaria e/ou no
+endereço eletrônico cooperpalmas.comunicacao@gmail.com.
+Parágrafo único. O Conselho de Administração terá cinco dias uteis para encaminhar
+resposta ao(à) cooperado(a), indicando, caso necessário, o prazo adicional necessário
+para a adoção das medidas cabíveis, conforme o caso.</p>
+<p><strong>Art. 9º</strong> O(A) cooperado(a) também poderá registrar reclamações, sugestões e elogios
+nos canais citados no artigo 8o, diretamente junto à Ouvidoria ou nos demais canais que
+venham a ser criados pela CooperPalmas.</p>
+<p><strong>Art. 10</strong> Denúncias de malfeitos, danos, irregularidades, riscos e ameaças deverão ser feitos
+diretamente à Diretoria Executiva, pessoalmente ou por escrito, em especial quando for
+necessário estabelecer sigilo da fonte.</p>
+<blockquote>
+<p>Parágrafo único. Não serão recebidas nem processadas eventuais denúncias ou
+reclamações anônimas.</p>
+</blockquote>
+<p><strong>Art. 11</strong> O(A) cooperado(a) não está autorizado(a) a negociar, operar, representar ou
+falar em nome da cooperativa, a não ser quando autorizado(a) expressamente pela
+Diretoria Executiva, pelo Conselho de Administração ou por decisão de assembleia de
+cooperados(as).</p>
+<p><strong>Art. 12</strong> Os(As) cooperados(as) devem permitir e facilitar a vistoria de suas unidades
+autônomas por qualquer membro da Diretoria Executiva, do Conselho de Administração,
+com a finalidade de fiscalizar o cumprimento do disposto no Estatuto Social e neste
+Regimento Interno, mediante prévio agendamento e presença do(a) cooperado(a),
+morador(a) ou preposto(a).</p>
+<blockquote>
+<p><strong>§ 1º</strong> O ingresso no lote do(a) cooperado(a) poderá ser compulsório em casos de
+incêndio ou fogo provocado sem autorização, de ruptura de tubulação de água, de
+risco à saúde e à segurança dos vizinhos(as), de maus tratos a animais ou qualquer
+situação que se caracterize como emergencial prevista em lei, com a comunicação
+tempestiva ou posterior, nas condições possíveis e dado o grau de urgência de
+solução do problema.</p>
+</blockquote>
+<p><strong>Art. 13</strong> A guarda, segurança, manutenção e higiene sanitária nas unidades individuais e nas residências são de responsabilidade única e exclusiva do(a) cooperado(a) ou de quem,
+em virtude de aluguel ou empréstimo, resida na sua unidade autônoma, sem exclusão de
+responsabilidade do(a) cooperado(a)</p><br><br>
+<h5 align="center"><strong>SEÇÃO I - DA ADMISSÃO NA COOPERATIVA</strong></h5>
+<br><br>
+<p><strong>Art. 14</strong> O processo para tornar-se cooperado(a) da CooperPalmas desenvolve-se mediante
+solicitação do(a) candidato(a), que deverá preencher a assinar requerimento contendo:</p>
+<p><strong>I.</strong> declaração de que está de acordo com o presente Regimento Interno e com o
+Estatuto Social, sobretudo, o capítulo referente aos deveres de cada cooperado(a);</p>
+<p><strong>II.</strong> disposição para adquirir o número mínimo de 15.000 quotas-partes da cooperativa,
+limitado a 75.000 quotas partes;</p>
+<p><strong>III.</strong> declaração de que não exerce atividade que contrarie os objetivos da cooperativa
+ou que com eles colidam.</p>
+<p><strong>Art. 15</strong> O Conselho de Administração avaliará o pedido de ingresso, devendo:</p>
+<blockquote>
+<p>I. entrevistar o(a) candidato(a) para conhecer seus objetivos e para esclarecer os
+objetivos da CooperPalmas;</p>
+<p>II. colher informações cadastrais sobre o(a) candidato(a) e sua vida pregressa;</p>
+<p>III. apresentar relatório final aprovando ou reprovando seu ingresso.</p>
+</blockquote>
+<p><strong>Art. 16</strong> Aprovado o ingresso do(a) candidato(a), sua admissão será formalizada de acordo
+com os artigos 6o e 7o do Estatuto Social.</p>
+<blockquote>
+<p>Parágrafo único. Será cobrada uma taxa equivalente a 25% do salário mínimo para
+inscrição do(a) novo(a) cooperado(a).</p>
+</blockquote>
+<p><strong>Art. 17</strong> A matrícula dos(as) cooperados(as) será realizada na forma prevista no art. 23
+do Estatuto Social e a lista com os nomes dos(as) novos(as) cooperados(as) deverá se</p>
+<br><br>
+<p align="center"> <b> SEÇÃO II - DAS PERMUTAS E TRANSFERÊNCIAS </b> </p><br><br>
+
+
+<p><strong>Art. 18</strong> O(A) cooperado(a) que desejar transferir suas quotas-partes a outros(as)
+cooperados(as) deverá se dirigir à sede administrativa da cooperativa, pessoalmente ou
+por meio de preposto(a), e indicar o desejo da transferência, mediante documento escrito.</p>
+<blockquote>
+<p>§ 1º Será cobrada uma taxa equivalente a 65% do salário mínimo para proceder à
+transferência e respectivas anotações.</p>
+<p>§ 2º Deverá ser dada preferência para a transferência de quotas partes entre
+cooperados da CooperPalmas.</p>
+</blockquote>
+<p><strong>Art. 19</strong> Será permitida a permuta de lotes entre cooperados(asa) e entre cooperados(as)
+e a CooperPalmas, desde que de comum acordo entre as partes.</p>
+<blockquote>
+<p>§ 1º O interesse da permuta entre cooperados(as) deverá ser comunicado oficialmente
+à CooperPalmas para que sejam atualizados os registros, sem custos adicionais às
+partes interessadas.</p>
+<p>§ 2º Caso algum(a) cooperado(a) tenha interesse em realizar permuta com lotes da
+CooperPalmas deverá comunicar à mesma para que o Conselho de Administração se
+pronuncie sobre a viabilidade e benefício comum na realização da permuta.</p>
+<p>§ 3º No caso de existir interesse da CooperPalmas em permutar lotes com
+cooperados(as) individuais, a intenção e a justificativa deverão ser apresentadas e
+aceitas pelo(a) cooperado(a) para que a permuta se efetive.</p>
+<p>§ 4º Na hipótese de existirem benfeitorias nos lotes a serem permutados, as condições
+de compensação serão negociadas entre as partes.</p>
+<p>§ 5ºo A permuta de lotes entre cooperados(as) e a CoopePalmas não ocorrerá com
+base em ressarcimento monetário entre as partes.</p>
+</blockquote>
+<br><br>
+<p align="center"> <b> SEÇÃO III - DO PROCESSO DE DEMISSÃO </b></p><br><br>
+<p><strong>Art. 20</strong> Querendo demitir-se, o(a) cooperado(a) deverá formalizar seu pedido de
+desligamento da cooperativa à Diretoria Executiva da CooperPalmas, por escrito,
+apresentando o motivo.</p>
+<blockquote>
+<p>§ 1º A devolução do valor das quotas-partes ao(à) cooperado(a) demitido(a) será
+feita em 15 prestações mensais de 1.000,00 (mil reais), mediante depósito bancário
+na conta indicada pelo(a) ex-cooperado(a).</p>
+<p>§ 2º O Conselho de Administração poderá deliberar pela diminuição do número de
+parcelas, caso haja recursos em caixa para tanto, conforme dispõe o Estatuto Social.
+Neste caso, a decisão deverá constar em ata de reunião, para divulgação por ocasião
+da primeira assembleia geral.</p>
+<p>§ 3º Não havendo dinheiro em caixa para o pagamento das quotas-partes do(a)
+cooperado(a) demitido(a), a devolução dos valores somente será feita quando as
+mesmas quotas-partes forem integralizadas por outro(a) cooperado(a).</p>
+</blockquote>
+<p><strong>Art. 21</strong> A CooperPalmas não poderá comercializar as quotas-partes recebidas de volta
+dos(as) cooperados(as) demitidos(as), excluídos(as) ou eliminados(as) da cooperativa,
+exceto quando houver deliberação de assembleia convocada para discutir propostas de
+comercialização e quando estiver de acordo com o plano de ocupação da cooperativa.</p>
+<blockquote>
+<p>§ 1º A CooperPalmas também não poderá comercializar os lotes de uso comum,
+exceto se aprovado pela assembleia geral e desde que não sejam áreas destinadas à
+composição da reserva legal.</p>
+<p>§ 2º Caso haja autorização da assembleia geral, a comercialização deverá ocorrer
+preferencialmente na modalidade de melhor proposta quotas-partes definidos no
+Estatuto Social por cooperado(a).</p>
+</blockquote>
+<br><br>
+<p align="center"> <b> SEÇÃO IV - DOS PROCESSOS DE EXCLUSÃO E ELIMINAÇÃO </b> </p>
+<br><br>
+<p><strong>Art. 22</strong> O processo de eliminação do(a) cooperado(a), que será aberto em uma das
+hipóteses previstas no artigo 12 do Estatuto Social, será iniciado por decisão do Conselho
+de Administração nos seguintes termos:</p>
+<blockquote>
+<p>I. será formalizado em autos, com capa identificando sua natureza, numerado por
+ordem de entrada e data; iniciando com o termo de abertura, assinado por membro
+do Conselho de Administração da CooperPalmas;</p>
+<p>II. todas as páginas do processo serão numeradas e rubricadas;</p>
+<p>III. o Conselho de Administração dará conhecimento ao Conselho de Ética para
+condução do processo;</p>
+<p>IV. o Conselho de Administração indicará membro para acompanhar o processo;</p>
+<p>V. o Conselho Fiscal será formalmente comunicado da abertura do processo e terá
+conhecimento sobre seu andamento, podendo examinar os autos a qualquer tempo.</p>
+</blockquote>
+<p><strong>Art. 23</strong> O Conselho de Ética conduzirá o processo, até a elaboração do relatório final
+atendendo aos seguintes requisitos:</p>
+<blockquote>
+<p>I. o(a) cooperado será notificado(a) e poderá apresentar defesa, justificativa ou
+informação, no prazo de 10 dias úteis, e solicitar oportunidade de produzir provas;</p>
+<p>II. havendo pedido de produção de provas, caberá ao Conselho de Ética deferir ou
+não, bem como fixar prazo, no caso de prova documental; ou designar audiência, no
+caso de prova testemunhal;</p>
+<p>III. o Conselho de Ética se reunirá com a presença do membro indicado pelo Conselho
+de Administração e elaborará parecer técnico;</p>
+<p>IV. o parecer será encaminhado ao Conselho de Administração, que emitirá decisão
+final, com assinatura também dos membros do Conselho de Ética;</p>
+<p>V. o parecer técnico do Conselho de Ética será encaminhado ao(à) cooperado(a)
+para conhecimento e eventual interposição de recurso;</p>
+<p>VI. o parecer técnico será encaminhado ao Conselho Fiscal para averbação.</p>
+<p>VII. o(a) cooperado(a) que tiver parecer conclusivo sobre sua eliminação terá o
+prazo de 30 dias corridos para apresentar recurso, dirigido à Diretoria Executiva da
+CooperPalmas;</p>
+<p>VIII. recebido o recurso, o mesmo será avaliado e terá decisão final emitida da
+Diretoria Executiva a ser apresentada na assembleia geral.</p>
+</blockquote>
+<p><strong>Art. 24</strong> O parecer técnico acerca da eliminação do(a) cooperado(a) será votado em
+assembleia geral, sendo a decisão tomada pela maioria dos votos dos presentes.</p>
+<p><strong>Art. 25</strong> A exclusão será automática nos casos dos incisos I, II, III e IV do artigo 14 do
+Estatuto Social, mas será registrada em ata de deliberação do Conselho de Administração, para arquivo na pasta do(a) cooperado(a) excluído(a).</p>
+<p><strong>Art. 26</strong> Na hipótese do inciso V do artigo 14 do Estatuto Social, será formalizado processo
+administrativo, com os mesmos trâmites do processo de eliminação, descritos nos artigos
+22, 23 e 24.</p>
+<p><strong>Art. 27</strong> Os resultados dos processos de demissão, exclusão e eliminação serão levados,
+em resumo técnico, para a assembleia geral, para conhecimento ou para deliberação,
+conforme o caso.</p>
+<p><strong>Art. 28</strong> Em caso de existirem benfeitorias na área individual de uso do(a) cooperado(a)
+eliminado(a), o Conselho Fiscal proporá, com suporte da área jurídica da CooperPalmas,
+a forma como será realizada sua compensação, cabendo decisão final à assembleia geral.</p>
+<br><br>
+<h2 id="-cap-tulo-i-"><strong><center>CAPÍTULO II</center> </strong></h2> 
+<h2 id="-cap-tulo-i-"><strong><center>DO FUNCIONAMENTO DA COOPERPALMAS</center></strong></h2>
+<br><br>
+<p><strong>Art. 29</strong> A CooperPalmas cobrará de todos(as) cooperados(as) uma taxa cooperativista
+mensal para cobrir os custos administrativos e operacionais de funcionamento, cuja
+composição e reajustes serão definidos em assembleia geral.</p>
+<p><strong>Art. 30</strong> As taxas extras para investimentos e/ou manutenção de serviços estruturais da
+CooperPalmas serão propostas pelo Conselho de Administração e discutidas e aprovadas
+em assembleia geral, que definirá o valor e a quantidade de parcelas a serem arrecadadas
+pela cooperativa.</p>
+<p><strong>Art. 31</strong> A CooperPalmas contratará funcionários(as) e prestadores(as) de serviço por meio
+de processo seletivo previamente divulgado a todos(as) cooperados(as), exceto quando
+houver situações de emergência e de notória especialização.</p>
+<blockquote>
+<p>§ 1º Cooperados(as) poderão participar dos processos seletivos e, caso sejam
+contratados(as), perderão o direito de votar e ser votado nas assembleias gerais
+até o exercício financeiro subsequente ao fim de seu contrato, conforme dispõe a
+legislação.</p>
+<p>§ 2º Não poderão ser contratados(as) como funcionários(as) ou prestadores(as) de
+serviços da cooperativa parentes de até segunda grau de membros do Conselho de
+Administração, Conselho de Ética ou Conselho Fiscal.</p>
+<p>§ 3º Funcionários(as) residentes em imóveis da CooperPalmas deverão preencher
+contrato específico de ocupação, renovado anualmente, que contenha os direitos
+e deveres, entre eles o pagamento de energia elétrica, manutenção dos imóveis e
+limpeza, roçagem e acero dos lotes.</p>
+<p>§ 4º Não é permitido aos(às) cooperados(as) recorrer aos(às) funcionários(as) da
+cooperativa para a execução de serviços particulares durante o horário de expediente.</p>
+</blockquote>
+<p><strong>Art. 32</strong> A CooperPalmas poderá elaborar projetos para prospectar e captar recursos
+externos não reembolsáveis junto ao setor público, empresas privadas, organizações
+nacionais e internacionais e instituições de fomento, que serão executados e implementados
+pelo Conselho de Administração, por cooperados(as) ou por meio da contratação de
+profissionais especializados(as).</p>
+<blockquote>
+<p>Parágrafo único. A contratação de serviços financeiros – empréstimos e/ou
+financiamentos – serão propostos pela Diretoria Executiva, analisados pelo Conselho
+de Administração, chancelados pelo Conselho Fiscal e submetidos à discussão e
+aprovação de assembleia geral.</p>
+</blockquote>
+<p><strong>Art. 33</strong> A CooperPalmas poderá prestar serviços remunerados aos cooperados como
+forma de garantir sua sustentabilidade financeira e o alcance de seus objetivos estatutários.</p>
+<blockquote>
+<p><strong>Parágrafo único.</strong> A espécie, o valor e as condições das prestações de serviços
+aos(às) cooperados(as) serão definidas pelo Conselho de Administração,
+chanceladas pelo Conselho Fiscal e, caso seja necessário, submetidas à
+apreciação de assembleia geral.</p>
+</blockquote>
+<br><br>
+<p align="center"> <b> SEÇÃO I - DIRETORIA EXECUTIVA </b> </p>
+<br><br>
+<p><strong>Art. 34</strong> É de responsabilidade da Diretoria Executiva, além do previsto no Artigo 71 do
+Estatuto Social:</p>
+<blockquote>
+<p><strong>I.</strong> zelar e manter em bom estado as ruas da CooperPalmas;</p>
+<p><strong>II.</strong> zelar e manter em bom estado as áreas comuns e edificações do espaço territorial
+da CooperPalmas;</p>
+<p><strong>III.</strong> realizar as roçagens dos lotes coletivos que estejam sem destinação e constituir
+os aceiros conforme orientação adequada para reduzir os riscos de incêndio e não
+colocar em risco unidades vizinhas</p>
+<p><strong>IV.</strong> realizar a manutenção e tratamento das árvores existentes em áreas de uso
+comum, incluindo as cercas delimitadoras da CooperPalmas;</p>
+<p><strong>V</strong>. contratar e realizar a gestão sobre os funcionários(as) da CooperPalmas;</p>
+<p><strong>VI.</strong> divulgar na portaria e nos canais de comunicação da CooperPalmas a escala de
+trabalho atualizada de funcionários da cooperativa, contendo dia, nome, horário de
+trabalho e intervalo de folga;</p>
+<p><strong>VII.</strong> divulgar mensalmente os balanços contábeis;</p>
+<p><strong>VIII.</strong> zelar, controlar e manter os equipamentos da CooperPalmas;</p>
+<p><strong>IX.</strong> constituir e dar condições de funcionamento à Brigada de Incêndio da
+CooperPalmas;</p>
+<p><strong>X.</strong> estabelecer critérios e condições para a realização de eventos que envolvam aparticipação de público externo;</p>
+<p><strong>XI.</strong> recepcionar, analisar e encaminhar para os conselhos competentes as sugestões,
+reclamações e denúncias de cooperados(as) da CooperPalmas;</p>
+<p><strong>XII.</strong> examinar diariamente o livro de reclamações e sugestões, a fim de verificar se
+foram praticadas condutas descritas no Título III desse Regimento Interno; encaminhar
+os registros aos conselhos competentes; e tomar as providências necessárias;</p>
+<p><strong>XIII.</strong> responder aos pedidos de esclarecimento e às sugestões, reclamações e
+denúncias dos(as) cooperados(as), no prazo de cinco dias uteis.</p>
+</blockquote>
+<br><br>
+<p align="center"> <b>  SEÇÃO II - CONSELHO DE ADMINISTRAÇÃO </b></p>
+<br> <br>
+<p><strong>Art. 35</strong> É de responsabilidade do Conselho de Administração, além do previsto no Artigo
+55 do Estatuto Social:</p>
+<blockquote>
+<p><strong>I.</strong> aprovar a contratação de funcionários e prestadores(as) de serviço proposta pela
+Diretoria Executiva da CooperPalmas;</p>
+<p><strong>II.</strong> instituir grupos de trabalho temporários para acompanhar, executar ou montar
+propostas e projetos para temas específicos de interesse da CooperPalmas;</p>
+<p><strong>III.</strong> identificar fontes de financiamento e elaborar projetos para captação de recursos;</p>
+<p><strong>IV.</strong> emitir normas técnicas sobre temas necessários ao correto funcionamento,
+respeito a legislação vigente e garantia da sustentabilidade na área ocupada pela
+CooperPalmas;</p>
+<p><strong>V.</strong> estabelecer critérios e condições para uso das áreas comuns e equipamentos
+coletivos da CooperPalmas</p>
+<p><strong>VI.</strong> elaborar um plano de gestão anual da gleba, para apreciação e aprovação da
+assembleia geral.</p>
+<p><strong>VII.</strong> fazer a prestação de contas anuais, acompanhada do parecer do Conselho Fiscal,
+compreendendo relatório de gestão e demonstrativo das sobras apuradas ou das
+perdas.</p>
+<p><strong>VIII.</strong> Estabelecer projetos de interesse da CooperPalmas para estimular e consolidar
+economia compartilhada entre cooperados.</p>
+</blockquote>
+<p><strong>Art. 36</strong> O Conselho de Administração será responsável por emitir critérios de edificações
+e normas técnicas relativas a segurança, ao uso da água, do solo e dos espaços de uso
+comum no prazo de 180 dias após a aprovação deste Regimento Interno.</p>
+<blockquote>
+<p><strong>§ 1º</strong> Serão constituídos grupos de trabalho (GTs) para suporte ao Conselho de
+Administração na elaboração dos normativos previstos no caput.</p>
+<p><strong>§ 2º</strong> Os GT(s) serão constituídos por, no máximo, cinco cooperados(as) a serem
+indicados pelo Conselho de Administração.</p>
+<p><strong>§ 3o</strong> As normas terão ampla divulgação entre os(as) cooperados(as), sendo divulgadas
+pelos canais de comunicação da CooperPalmas.</p>
+<p><strong>§ 4º</strong> Havendo questionamento por mais de 1/3 dos(as) cooperados(as), apresentados
+mediante abaixo assinado, as normas deverão ser revistas em assembleia geral
+convocada especificamente para esta finalidade.</p>
+<p><strong>§ 5º</strong> O cumprimento dos normativos técnicos é obrigatório a todos(as) cooperados(as),
+cabendo as sanções previstas neste Regimento Interno.</p>
+<p><strong>§ 6º</strong> As normas técnicas poderão ser alteradas sempre que houver alteração
+na legislação relacionada ao tema ou ocorrer fato superveniente que justifique a
+alteração.</p>
+</blockquote>
+<p><strong>Art. 37</strong> O Parágrafo 2o do Artigo 71 do Estatuto Social, que prevê os limites de valor das
+despesas a serem realizadas pela Diretoria Executiva e as respectivas alçadas do Conselho
+de Administração, Conselho Fiscal e da Assembleia Geral, fica regulamentado conforme
+o disposto abaixo.</p>
+<blockquote>
+<p><strong>§ 1º</strong> A Diretoria Executiva fica autorizada a promover despesas no valor de até
+10 salários mínimos sem autorização prévia do Conselho de Administração e do
+Conselho Fiscal;</p>
+<p><strong>§ 2º</strong> O Conselho Fiscal poderá autorizar a realização de despesas requeridas pela
+Diretoria Executiva até o limite de 20 salários mínimos;</p>
+<p>§ 3o As despesas com valores superiores a 20 salários mínimos deverão necessariamente
+ser aprovadas em assembleia geral, exceto naqueles casos de emergência cabalmente
+demonstrados e comprovados pelo Conselho de Administração ao Conselho Fiscal,
+nos termos do inciso VI do Artigo 53 do Estatuto Social.</p>
+</blockquote>
+<p><strong>Art. 38</strong> A CooperPalmas adotará os livros descritos no Artigo 22 do Estatuto Social, os
+quais serão armazenados na sede da cooperativa, de onde não poderão ser retirados.</p>
+<blockquote>
+<p><strong>§ 1º</strong> A CooperPalmas adotará o formato de livro de folhas soltas e numeração
+sequenciada.</p>
+<p><strong>§ 2º</strong> Na portaria da CooperPalmas será disponibilizado livro de ocorrências para
+acolher sugestões, pedidos de esclarecimentos, reclamações e denúncias.</p>
+</blockquote>
+<br><br>
+<p align="center"> <b> SEÇÃO III - DO CONSELHO DE ÉTICA </b></p>
+<br><br>
+
+<p><strong>Art. 39</strong> Além de apoiar o Conselho de Administração e cumprir as deliberações das
+assembleias gerais, o Conselho de Ética poderá tomar iniciativas próprias e autônomas
+nas questões relacionadas à sua área de atuação.</p>
+<p><strong>Art. 40</strong> São atribuições do Conselho de Ética, além do previsto no Artigo 83 do Estatuto
+Social:</p>
+<blockquote>
+<p><strong>I.</strong> mediar conflitos entre cooperados(as);</p>
+<p><strong>II.</strong> orientar os(as) cooperados(as) e moradores(as) sobre as normas de convivência
+e as regras vigentes;</p>
+<p><strong>III.</strong> esclarecer os(as) cooperados(as) sobre a formalização de denúncias;</p>
+<p><strong>IV.</strong> recepcionar e apurar reclamações e denúncias com fundamentos de natureza
+ética apresentadas por cooperados(as);</p>
+<p><strong>V.</strong> instaurar e encaminhar ao Conselho de Administração processos decorrentes das
+reclamações e denúncias recebidas de cooperados(as) através da ouvidoria;</p>
+<p><strong>VI.</strong> formalizar o processo e proceder aos atos necessários à instrução das demandas
+apresentadas pelos(as) cooperados(as);</p>
+<p><strong>VII.</strong> propor penalidades a serem aplicadas aos(às) cooperados(as) e aos membros
+da Diretoria Executiva, do Conselho de Administração e do Conselho Fiscal.</p>
+</blockquote>
+<p><strong>Art. 41</strong> O Conselho de Ética deverá instituir um Canal de Ouvidoria que terá como
+missão receber sugestões e reclamações de cooperados(as) relacionados à gestão da
+CooperPalmas.</p>
+<blockquote>
+<p><strong>§ 1º</strong> A propósito de responder aos questionamentos dos(as) cooperados(as),
+a Ouvidoria poderá solicitar informações à Diretoria Executiva, ao Conselho de
+Administração e ao Conselho Fiscal da CooperPalmas, que deverão fornecer as
+respostas no prazo de cinco dias úteis.</p>
+<p><strong>§ 2º</strong> O Conselho de Ética deverá escolher entre seus membros um(a) Ouvidor(a)
+para coordenar as atividades da Ouvidoria.</p>
+<p><strong>§ 3º</strong> O Conselho de Ética deverá estabelecer a forma de funcionamento da Ouvidoria e
+solicitar ampla divulgação de suas atividades por parte do Conselho de Administração
+da CooperPalmas.</p>
+<p><strong>§ 4º</strong> A Ouvidoria deverá acompanhar o encaminhamento das demandas e resposta
+final aos(às) cooperados(as) e divulgará relatórios periódicos com estatísticas
+relevantes</p>
+</blockquote>
+<br><br>
+<p align="center"> <b>  SEÇÃO IV - DO CONSELHO FISCAL </b></p>
+<br><br>
+<p><strong>Art. 42</strong> As atribuições do Conselho Fiscal são aquelas definidas no Artigo 79 do Estatuto
+Social.</p>
+<p><strong>Art. 43</strong> O(A) coordenador(a) do Conselho Fiscal, previsto no § 2o do Artigo 78 do Estatuto
+Social, também será responsável pela interlocução e pelo agendamento das reuniões com
+a Diretoria Executiva da CooperPalmas.</p>
+<p><strong>Art. 44</strong> O Conselho Fiscal deverá se reunir mensalmente com a Diretoria Executiva
+da CooperPalmas por ocasião da entrega dos balancetes mensais a fim de esclarecer
+eventuais dúvidas relativas às despesas realizadas pela cooperativa, bem como tratar de
+qualquer outra questão relacionada à gestão da CooperPalmas.</p>
+<blockquote>
+<p><strong>Parágrafo único.</strong> Na hipótese de a Diretoria Financeira não responder aos questionamentos
+formais do Conselho Fiscal, o(a) seu(sua) coordenador(a) poderá solicitar esclarecimentos
+diretamente à assessoria contábil da CooperPalmas.</p>
+</blockquote>
+<p><strong>Art. 45</strong> A divulgação das atas das reuniões e os pareceres do Conselho Fiscal serão
+publicadas por e-mail e grupos de Whatsapp.</p>
+<p><strong>Art. 46</strong> Caberá ao Conselho Fiscal definir sua forma de funcionamento em regimento
+próprio, desde não contrarie o disposto no Estatuto Social e no presente Regimento Interno.</p>
+<br><br>
+<p align="center"> <b> SEÇÃO V - DO REGULAMENTO ELEITORAL </b> </p> 
+<br><br>
+<p><strong>Art. 47</strong> O processo de eleições do Conselho de Administração e do Conselho de Ética,
+que ocorrerá a cada dois anos, será conduzido por um Comitê Eleitoral.</p>
+<blockquote>
+<p><strong>§ 1º</strong> O Comitê Eleitoral será composto por três membros dentre cooperados(as) que
+não serão candidatos(as) a cargos eletivos na CooperPalmas.</p>
+<p><strong>§ 2º</strong> O Comitê Eleitoral será constituído no prazo mínimo de 45 dias antes do término
+do mandato vigente.</p>
+</blockquote>
+<p><strong>Art. 48</strong> O processo eleitoral para ocupação dos cargos da Diretoria Executiva, do Conselho
+de Administração e do Conselho de Ética será realizado por meio do registro de chapas.</p>
+<blockquote>
+<p><strong>§ 1º</strong> Não haverá limite quanto ao número de chapas inscritas.</p>
+<p><strong>§ 2º</strong> As chapas serão compostas obrigatoriamente pelo número de membros que
+comporão a Diretoria Executiva, o Conselho de Administração e o Conselho de Ética,
+na forma prevista pelo Estatuto Social.</p>
+<p><strong>§ 3º</strong> Somente serão aceitas candidaturas de cooperados(as) que estejam em dia
+com suas obrigações estatutárias e que estejam adimplentes, situação que deve
+permanecer durante todo o mandato.</p>
+</blockquote>
+<p><strong>Art. 49</strong> Compete ao Comitê Eleitoral cumprir rigorosamente o disposto no art. 91 do
+Estatuto Social.</p>
+<p><strong>Art. 50</strong> A assembleia geral para eleger os membros da Diretoria Executiva, do Conselho de
+Administração e do Conselho de Ética será convocada pelo Conselho de Administração
+com antecedência mínima de 45 dias, em única convocação, por meio da publicação de
+editais, que serão divulgados nos canais de comunicação da CooperPalmas.</p>
+<p><strong>Art. 51</strong> O edital publicado conterá as seguintes informações:</p>
+<blockquote>
+<p><strong>I</strong>. data, horário e local da votação;</p>
+<p><strong>II.</strong> prazo para registro de chapas de, no mínimo, 10 dias após a convocação da
+assembleia geral ordinária;</p>
+<p><strong>III.</strong> horário para entrega de documentos para o registro das chapas;</p>
+<p><strong>IV.</strong> data de nova eleição, em caso de empate entre os concorrentes.</p>
+</blockquote>
+<p><strong>Art. 52</strong> O registro das chapas deverá ser feito no prazo de até 15 dias após a publicação
+do edital de convocação, subscrito por todos os(as) candidatos(as), com indicação dos
+cargos e proposta de trabalho.</p>
+<p><strong>Art. 53</strong> A impugnação de chapas ou de candidatos, baseada em razões amparadas pelo
+Estatuto Social, deverá ser comunicada em até três dias corridos após o registro da chapa.</p>
+<blockquote>
+<p><strong>§ 1º</strong> Aos candidatos impugnados será garantido o direito à ampla defesa e ao
+contraditório, também no prazo de três dias, contados da data da notificação feita
+pelo Comitê Eleitoral;</p>
+<p><strong>§ 2º</strong> Recebida ou não a resposta dos(as) candidatos(as) impugnados(as), O Comitê
+Eleitoral decidirá, no prazo de dois dias sobre a impugnação, intimando os interessados;</p>
+<p><strong>§ 3º</strong> As partes interessadas poderão recorrer ao Conselho de Administração, na forma
+do art. 91, parágrafo único do Estatuto Social, no prazo de dois dias.</p>
+<p><strong>§ 4º</strong> A decisão do Conselho de Administração será publicada no prazo de dois dias.</p>
+<p><strong>§ 5º</strong> Tendo sido acolhida a impugnação de um(a) ou mais candidatos(as), a chapa
+terá três dias para apresentação de novos nomes.</p>
+</blockquote>
+<p><strong>Art.54</strong> As eleições serão realizadas por voto direto e secreto, em cédulas, confeccionadas
+pelo Comitê Eleitoral e recolhidas em urnas herméticas.</p>
+<p><strong>Art.55</strong> Poderão votar todos(as) cooperados(as) que estiverem em dia com suas obrigações
+estatutárias e regimentais.</p>
+<p><strong>Art. 56</strong> O voto é pessoal e intransferível, não sendo permitida a votação por procuração,
+na forma do art. 45, § 1o do Estatuto Social da CooperPalmas.</p>
+<p><strong>Art. 57</strong> Será proclamada vitoriosa a chapa que obtiver maioria simples dos votos.</p>
+<p><strong>Art. 58</strong> O resultado oficial será divulgado amplamente a todos(as) cooperados(as) por
+meio dos canais de comunicação da CooperPalmas.</p>
+<p><strong>Art. 59</strong> Sempre que houver vacância de cargos da Diretoria Executiva, do Conselho de
+Administração e do Conselho de Ética, serão realizadas eleições em processo simplificado,
+por meio da convocação de cooperados(as) interessados(as).</p>
+<blockquote>
+<p><strong>§ 1º</strong> O Conselho de Administração convocará assembleia geral extraordinária para
+apresentação do(s) candidato(s) seguindo-se de processo de votação e homologação.</p>
+<p><strong>§ 2º</strong> Se faltar menos de seis meses para o término do mandato dos membros da
+Diretoria Executiva, do Conselho de Administração e do Conselho de Ética, a função
+vacante será absorvida, interinamente, pelos demais membros destas instâncias.</p>
+</blockquote>
+<p><strong>Art. 60</strong> A eleição do Conselho Fiscal ocorrerá durante o primeiro trimestre de cada ano,
+obedecendo ao disposto nos artigos 75 e 76 do Estatuto Social.</p>
+<p><strong>Art. 61</strong> A eleição do Conselho Fiscal será realizada conforme as regras do processo eleitoral
+para os membros do Conselho de Administração e do Conselho de Ética.</p><br><br>
+
+<h2 id="t-tulo-iii-das-normas-gerais-usos-costumes-e-disciplina"><center>TÍTULO III</center></h2>
+<h2 id="t-tulo-iii-das-normas-gerais-usos-costumes-e-disciplina"><center>DAS NORMAS GERAIS, USOS, COSTUMES E DISCIPLINA</center></h2>
+
+<br><br>
+<p><strong>Art. 62</strong> Os(As) cooperados(as) deverão zelar pela segurança, bem-estar, limpeza,
+embelezamento, harmonia, qualidade de vida e sustentabilidade no espaço territorial da
+CooperPalmas, de acordo com as normas gerais, usos, costumes e disciplina descritos
+nos próximos dispositivos regimentais.</p>
+<p><strong>Art. 63</strong> O(A) cooperado(a), bem como seus(suas) prepostos(as) e moradores(as) do
+seu módulo na CooperPalmas, devem agir de maneira ética, abstendo-se de práticas
+criminosas ou contravencionais que atraiam consequências para si mesmo e/ou para a
+CooperPalmas, tais como:</p>
+
+<p><strong>I.</strong> interferir, alterar ou mexer na rede elétrica, hidráulica, telefônica, nas luminárias ou
+em quaisquer outros equipamentos existentes nas áreas sob gestão da CooperPalmas;</p>
+<p><strong>II.</strong> manter plantio e/ou comercialização de substâncias consideradas ilícitas.</p>
+<p><strong>III.</strong> fracionar a respectiva unidade autônoma, independente da quantidade de
+quotas partes de que disponha, para fins de alienação ou locação, a terceiros não
+cooperados(as) em ofensa ao Estatuto Social da CooperPalmas;</p>
+<p><strong>IV.</strong> construir, nos espaços privados, em desacordo com as regras estabelecidas pelas
+autoridades e pela CooperPalmas, que serão divulgadas em material específico;</p>
+<p><strong>V.</strong> manter atividade econômica em funcionamento em desacordo com a legislação
+vigente, específica para cada caso;</p>
+<p><strong>VI.</strong> praticar atos de abuso ou maus tratos aos animais</p>
+<p><strong>VII</strong>. praticar atos que atentem contra a integridade física, moral ou psicológica dos
+demais cooperados e funcionários.</p>
+
+<p><strong>Art. 64</strong> As condutas acima qualificadas serão notificadas às autoridades competentes, a
+fim de que sejam apuradas e solucionadas, na forma do ordenamento jurídico brasileiro,
+cabendo abertura de processo de eliminação do(a) cooperado(a) conforme disposto nos
+artigos 11 e 12 do Estatuto Social.</p>
+<p><strong>Art. 65</strong> Havendo prejuízos à CooperPalmas, em decorrência dessas condutas, o(a)
+cooperado(a) será notificado(a) para fins de ressarcimento.</p>
+<br><br>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><strong><center>CAPÍTULO I</strong></center></h2>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><strong><center>ATIVIDADES E RELAÇÕES ECONÔMICAS</center></strong></h2>
+  <br>
+  <br>
+
+<p><strong>Art. 66</strong> As finalidades econômicas da CooperPalmas são de natureza agroambiental,
+de modo que serão desautorizadas atividades de cooperados(as), no âmbito dos seus
+módulos privados, que descumpram a agenda ambiental, as diretrizes estatutárias ou
+que sejam capazes de provocar prejuízos e danos ao meio ambiente, aos animais e ao
+ser humano.</p>
+<p><strong>Art. 67</strong> A intenção de execução de atividade econômica deverá ser comunicada ao
+Conselho de Administração, que avaliará as condições para o seu funcionamento, se for
+o caso.</p>
+
+<p><strong>Parágrafo único.</strong> Atividades econômicas que envolvam fluxo intenso e constante de
+pessoas alheias à CooperPalmas serão avaliadas em assembleia geral.</p>
+
+<p><strong>Art. 68</strong> Serão vedadas atividades não autorizadas pela legislação vigente para o Núcleo
+Rural do Lago Oeste.</p>
+<p><strong>Art. 69</strong> Os(as) cooperados(as) poderão divulgar, opcionalmente, suas atividades no site
+da CooperPalmas, mediante regras a serem disponibilizadas.</p>
+<br><br>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><center>CAPÍTULO II</center></h2>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><center>DAS CONSTRUÇÕES</center></h2>
+<br><br>
+<p><strong>Art. 70</strong> As benfeitorias deverão seguir padrões e critérios ambientalmente compatíveis
+com os objetivos da CooperPalmas, com seu plano de ocupação e com a legislação
+ambiental vigente.</p>
+<p><strong>Art. 71</strong> O(A) cooperado(a) interessado(a) em realizar construção, deverá apresentar os
+projetos técnicos detalhados à apreciação e aprovação do Conselho de Administração
+da CooperPalmas, que poderá contar com profissional especializado para análise da
+proposta.</p>
+<blockquote>
+<p><strong>§ 1º</strong> Toda a área impermeabilizada no(s) lote(s) relacionado(s) às quotas partes
+individuais, incluídas áreas de piscina, caixa de água e calçamento, não deverão
+ultrapassar 5% da área.</p>
+<p><strong>§ 2º</strong> As construções não poderão ter mais de dois pisos e mais de um subsolo.</p>
+<p><strong>§ 3º</strong> O projeto deverá prever, obrigatoriamente a existência de fossas sépticas ou
+ecológicas, sendo expressamente vedadas o uso de fossas negras.</p>
+<p><strong>§ 4º</strong> Demais normas e critérios técnicos para as edificações serão estabelecidos em
+instrução normativa própria, emitida nos termos do Artigo 36 do presente Regimento
+Interno.</p>
+<p><strong>§ 5º</strong> A entrada de materiais para construção será autorizada após a aprovação do
+projeto pelo Conselho de Administração, que terá o prazo máximo de 30 dias para
+se pronunciar.</p>
+<p><strong>§ 6º</strong> A autorização de novas construções está sujeita à compatibilidade com o Plano
+de Ocupação da CooperPalmas.</p>
+<p><strong>§ 7º</strong> O disposto neste artigo aplica-se também à instalação de contêineres.</p>
+<p><strong>§ 8º</strong> É expressamente proibida a construção de muros ou instalação de tapumes de
+quaisquer materiais nos limites das áreas individuais, seguindo as diretrizes do Plano
+de Ocupação do Lago Oeste.</p>
+<p><strong>§ 9º</strong> Os(As) cooperados(as) que possuam benfeitorias que não atendam ao disposto
+nos § 3o e § 4o deverão se adequar no prazo previsto no regulamento específico ou
+em qualquer tempo após notificação da CooperPalmas.</p>
+<p><strong>§ 10º</strong> A CooperPalmas negociará medidas mitigadoras e compensatórias com
+os cooperados que possuam construções já consolidadas e que não atendam ao
+disposto no § 1o e em demais critérios estabelecidos nos normativos próprios.</p>
+</blockquote>
+<p><strong>Art. 72</strong> Obras de reforma ou ampliações de construções já existentes, que não ultrapassem
+o limite de impermeabilização de 5% da área e atendam aos critérios previstos nas normas
+de edificações, deverão ser comunicadas à CooperPalmas com cinco dias de antecedência
+para fins de controle e autorização da entrada de materiais e funcionários.</p>
+<p><strong>Art. 73</strong> Sem prejuízo às demais orientações a serem dispostas em normativo próprio fica
+expressamente proibido:</p>
+<blockquote>
+<p><strong>I.</strong> efetuar obras ou reformas de vulto na própria unidade autônoma fora do horário
+das 8h às 18h, de segunda a sábado, exceto nos casos de emergências devidamente
+autorizadas;</p>
+<p><strong>II.</strong> depositar materiais de construção nos passeios ou na rua durante a construção ou
+reformas;</p>
+<p><strong>III.</strong> a construção de muros ou instalação de tapumes ou afins no limite dos lotes
+individuais;</p>
+<p><strong>IV.</strong> A divisão ou subparcelamento das quotas partes individuais com a finalidade de
+venda ou locação.</p>
+</blockquote>
+<br><br>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><strong><center>CAPÍTULO III</center></strong></h2>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><strong><center>DO USO DA ÁGUA</center></strong></h2>
+<br><br>
+<p><strong>Art. 74</strong> O uso da água da Cooperpalmas será determinado a partir do Plano Diretor de
+Segurança Hídrica.</p>
+<p><strong>Art. 75</strong> A água, proveniente dos poços artesianos da CooperPalmas, será fornecida às
+unidades ativas mediante a instalação de hidrômetros individuais.
+Parágrafo único. Entende-se por unidades ativas aquelas que possuam algum tipo
+de uso para fins de moradia, recreação ou plantio.</p>
+<p><strong>Art. 76</strong> A CooperPalmas poderá adotar mecanismo de cobrança do uso da água,
+estabelecido em normativo específico sobre uso da água, a ser aprovado em assembleia
+geral e conforme disposto neste Regimento Interno, atendidas as seguintes condições:</p>
+<blockquote>
+<p><strong>I.</strong> deverão ser estabelecidas faixas de consumo progressivas, garantindo um consumo
+mínimo isento para cada cooperado(a).</p>
+<p><strong>II.</strong> a metodologia de formação de preço deverá levar em conta os custos fixos e
+variáveis de sua produção e constituição de um fundo de reserva para expansão e
+manutenção, a ser aprovado em assembleia geral.</p>
+<p><strong>III.</strong> a cobrança será feita mensalmente com indicação explícita dos valores referentes
+ao uso da água.</p>
+</blockquote>
+<p><strong>Art. 77</strong> É de responsabilidade de cada cooperado(a) a manutenção de sua rede hídrica
+interna e a responsabilidade pelo uso da água, sendo o desperdício recorrente passível de
+sanções, a despeito do pagamento do consumo devido.</p>
+<p><strong>Art. 78</strong> Piscinas, tanques de peixe e outros reservatórios de água deverão ser conservados
+em condições higiênicas e de saneamento adequadas de modo a prevenir a ocorrência de
+doenças endêmicas.</p>
+<p><strong>Art. 79</strong> É expressamente proibido requerer outorga individual e perfurar poços artesianos
+nos lotes de uso individual.</p>
+<p><strong>Art. 80</strong> A perfuração de cisternas com vazão de até 5.000 litros por dia é permitida
+mediante comunicação prévia à Diretoria Executiva da CooperPalmas e desde que seja
+efetuado cadastro na ADASA, conforme dispõe a legislação.</p>
+<p><strong>Art. 81</strong> É vedada a abertura ou manutenção de fossas negras ou outras estruturas de
+saneamento que não sejam categorizadas como fossas sépticas ou ecológicas no âmbito
+da CooperPalmas.</p>
+<blockquote>
+<p><strong>§ 1º</strong> Os cooperados terão dois anos a contar da publicação deste Regimento Interno
+para substituição das fossas negras porventura existentes.</p>
+<p><strong>§ 2º</strong> O prazo previsto no § 1o deste artigo poderá ser revisto em função das
+condicionalidades ambientais previstas no processo de licenciamento ambiental do
+Núcleo Rural do Lago Oeste.</p>
+</blockquote>
+<br><br>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><center>CAPÍTULO IV</center></h2>
+<h2 id="cap-tulo-i-atividades-e-rela-es-econ-micas"><center>DAS NORMAS AGROAMBIENTAIS</center></h2>
+<br><br>
+<p><strong>Art. 82</strong> As normas previstas neste Regimento Interno são complementares aos normativos
+vigentes que regem a APA do Planalto Central, a APA distrital da Cafuringa, o Zoneamento
+Ecológico Econômico do Distrito Federal e demais normativos que regem o uso do solo
+no Núcleo Rural do Lago Oeste.</p>
+<p><strong>Art. 83</strong> Todas as atividades e ações desenvolvidas na CooperPalmas deverão ser
+compatíveis com a preservação do meio ambiente e a garantia da segurança hídrica.</p>
+<p><strong>Art. 84</strong> A CooperPalmas manterá vigentes e atualizados o Projeto Agroambiental, que
+definirá diretrizes de uso do solo e recuperação ambiental, preservação do cerrado e
+manejo de resíduos sólidos.</p>
+<p><strong>Art. 85</strong> A CooperPalmas adotará ações de recuperação e recomposição da vegetação
+nativa ou outras formas de reflorestamento nas áreas de uso comum da cooperativa.</p>
+<blockquote>
+<p><strong>§ 1º</strong> O plantio de quaisquer espécies nas áreas comuns deverá ser precedido
+de autorização da cooperativa e respeitar as diretrizes constantes do Projeto
+Agroambiental.</p>
+<p><strong>§ 2º</strong> É permitido o plantio de espécies arbóreas e demais plantas ornamentais na
+área 1,5 m em frente aos terrenos individuais, observando-se a escolha de espécies
+de pequeno e médio porte que não afetem a rede elétrica. Nestes casos a poda e
+destinação dos resíduos será de responsabilidade do(a) cooperado(a).</p>
+</blockquote>
+<p><strong>Art. 86</strong> Os plantios comerciais e a criação de animais com fins comerciais deverão respeitar
+as restrições vigentes na legislação para o Núcleo Rural do Lago Oeste.</p>
+<blockquote>
+<p><strong>§ 1º</strong> A escolha de espécies a serem plantadas deverá respeitar o zoneamento
+agroclimático da região objetivando a redução do consumo de recursos hídricos.</p>
+<p><strong>§ 2º</strong> A CooperPalmas promoverá ações de capacitação em parceria com a Emater e
+demais órgãos públicos de apoio a produção de base agroecológica e preservação
+do cerrado.</p>
+<p><strong>§ 3º</strong> É permitida na CooperPalmas a criação não comercial de bovinos e equinos,
+limitada a dois animais, no total, por unidade individual, desde que mantidos na área
+privada, em locais próprios e adequados a cada espécie, respeitando os aspectos
+sanitários e a legislação vigente para a APA do Planalto Central.</p>
+<p><strong>§ 4º</strong> A criação de caprinos, ovinos e aves será permitida desde que mantidos na área
+privada do cooperado em locais próprios e adequados à espécie.</p>
+<p><strong>§ 5º</strong> Todos os animais deverão estar em dia com o calendário de vacinação.</p>
+<p><strong>§ 6º</strong> O uso de espécies exóticas invasoras só será aceito com a responsabilidade pelo
+manejo adequado de modo a não impactar o Parque Nacional de Brasília.</p>
+</blockquote>
+
+<p>Art. 87 As podas de árvores de médias e grandes proporções deverão ser comunicadas
+à CooperPalmas com três dias de antecedência, devendo ser observadas as restrições
+previstas na legislação no que diz respeito às espécies imunes a corte.</p>
+<blockquote>
+<p><strong>§ 1º</strong> A destinação dos restos de podas é de responsabilidade exclusiva do(a)
+cooperado(a), devendo ser priorizado o aproveitamento dentro da propriedade
+e proibida a disposição do mesmo em lotes de terceiros ou de propriedade da
+cooperativa.</p>
+<p><strong>§ 2º</strong> A CooperPalmas poderá disponibilizar serviços de trituração mediante
+pagamento.</p>
+</blockquote>
+<p><strong>Art. 88</strong> É permitida a criação de animais de companhia, atendidas as seguintes condições:</p>
+<blockquote>
+<p><strong>§ 1º</strong> Os animais deverão ser mantidos exclusivamente na área privada do(a)
+cooperado(a), observando-se condições de higiene e alimentação adequadas às
+espécies.</p>
+<p><strong>§ 2º</strong> Os animais deverão estar em dia com o cartão de vacinação. A castração também
+é recomendada.</p>
+<p><strong>§ 3º</strong> É permitida a criação de espécies exóticas desde que atendidas as condições
+dispostas no § 1o e com as devidas autorizações dos órgãos ambientais.</p>
+<p><strong>§ 4º</strong> É proibida a manutenção de espécies nativas em cativeiro, exceto com autorização
+do órgão ambiental competente.</p>
+<p><strong>§ 5º</strong> O(A) cooperado(a) deverá arcar com os danos e prejuízos financeiros por
+ventura causados a terceiros pelos seus animais ou de eventuais visitantes.</p>
+</blockquote>
+<p><strong>Art. 89</strong> A CooperPalmas poderá eventualmente realizar a castração e vacinação de animais
+abandonados, que porventura frequentem as dependências da cooperativa, inclusive com
+apoio do poder público, por tratar-se de questão de saúde pública e segurança.</p>
+<p><strong>Art. 90</strong> A CooperPalmas deverá adotar medidas educativas de conscientização a respeito
+do lixo e tomar as providências necessárias para viabilizar a reciclagem e compostagem
+do lixo produzido na CooperPalmas.</p>
+<blockquote>
+<p><strong>§ 1º</strong> É de responsabilidade de cada cooperado(a) a disposição adequada do
+lixo produzido em seu lote, conforme normativos a serem estabelecidos pela
+CooperPalmas.</p>
+<p><strong>§ 2º</strong> É expressamente proibido depositar lixo ou entulho nas áreas comuns da
+cooperativa ou em terrenos de terceiros.</p>
+</blockquote>
+<p><strong>Art. 91</strong> É expressamente proibido no âmbito da CooperPalmas:</p>
+<blockquote>
+<p><strong>I.</strong> atear fogo para limpeza de terreno e queima de lixo doméstico, bem como queima
+de podas e demais materiais orgânicos em desacordo com as regras previstas nesse
+regimento e nas diretrizes da brigada de incêndio.</p>
+<p><strong>II.</strong> utilizar ou armazenar agrotóxicos, de qualquer espécie, inseticidas ou herbicidas,
+tais como Roundup, conforme legislação vigente para a APA do Planalto Central,
+sendo permitido o uso de produtos fitossanitários aprovados para a produção
+orgânica.</p>
+<p><strong>III.</strong> realizar plantio de transgênicos, conforme legislação vigente para a APA do
+Planalto Central.</p>
+<p><strong>IV.</strong> deixar de realizar o controle do capim e/ou de espécies agressivas e invasoras
+como margaridão e leucenas nas áreas privadas, colocando em risco a vizinhança e
+a CooperPalmas nos tempos de seca.</p>
+<p><strong>V.</strong> manter depósito de lixo ou entulho nos terrenos individuais de forma inadequada
+causando riscos à saúde dos cooperados.</p>
+</blockquote>
+
+<p> <strong>Art. 92</strong> É permitida a realização de fogueiras festivas e/ou cerimoniais desde que autorizado
+pela Administração com pelo menos cinco dias de antecedência e cumpridas as regras
+e diretrizes de segurança a serem definidas de acordo com a época do ano, em parceria
+com a Brigada de Incêndio.</p>
+<br><br>
+<h3 id="t-tulo-iv-das-infra-es-e-penalidades"><center>TÍTULO IV</center></h3>
+<h3 id="t-tulo-iv-das-infra-es-e-penalidades"><center>DAS INFRAÇÕES E PENALIDADES</center></h3>
+<br><br>
+<p><strong>Art. 93</strong> Constituem infrações aos usos, costumes e direito de vizinhança as seguintes
+práticas, classificadas de acordo com a gravidade:</p>
+<blockquote>
+<p><strong>I.</strong> infrações de natureza média:</p>
+<blockquote>
+<p><strong>a)</strong> deixar volumes ou objetos nas áreas de uso comum, comprometendo a ordem
+e a estética do espaço territorial da CooperPalmas;</p>
+<p><strong>b)</strong> afixar placas, letreiros, anúncios, faixas ou cartazes sem autorização
+do Conselho de Administração nas dependências internas e externas da
+CooperPalmas;</p>
+<p><strong>c)</strong> permitir que animais transitem sem o seu proprietário nas partes comuns da
+CooperPalmas ou adentrem áreas de outros cooperados;</p>
+<p><strong>d)</strong> usar a portaria e dependências comuns da CooperPalmas para veiculação,
+venda e marketing de produtos, festas e serviços particulares;</p>
+<p><strong>e)</strong> realizar eventos em áreas comuns da cooperativa sem a devida autorização;</p>
+<p><strong>f)</strong> perturbar os vizinhos com som que possa ser ouvido em outras unidades
+autônomas da CooperPalmas, de forma incômoda, após as 22h;</p>
+<p><strong>g)</strong> transitar com veículos em velocidade superior a 30 km/h no interior da
+cooperativa;</p>
+<p><strong>h)</strong> utilizar rojões ou fogos de artifício que produzam efeito sonoro, respeitando as
+restrições necessárias a Área de Preservação Ambiental a qual a Cooperativa integra;</p>
+</blockquote>
+<p><strong>II.</strong> Infrações de natureza grave:</p>
+<blockquote>
+<p><strong>a)</strong> ceder ou alugar qualquer dependência para fins incompatíveis com a natureza
+da CooperPalmas;</p>
+<p><strong>b)</strong> utilizar a unidade autônoma para fins comerciais ou não residenciais, não
+previstos no Capítulo I do Título III, inclusive para fins de depósito fechado
+de qualquer tipo de bens, mercadorias ou objetos estranhos à finalidade da
+cooperativa, exceto quando atividade regulamentada em assembleia;</p>
+<p><strong>c)</strong> desrespeitar o disposto no Capítulo II do Título III do presente Regimento
+Interno e demais normativos referentes à normas de edificações.</p>
+<p><strong>d)</strong> realizar qualquer tipo de intervenção (plantio, retirada de terra, retirada de
+plantas, avanço de cerca, etc.) nas áreas comuns e/ou nos terrenos da cooperativa
+ou de terceiros sem autorização.</p>
+</blockquote>
+</blockquote>
+<p><strong>Art. 94</strong> Às infrações aos usos, costumes e direito de vizinhança, caberão as seguintes
+penalidades:</p>
+<blockquote>
+<p><strong>I.</strong> nas infrações de natureza média:</p>
+<blockquote>
+<p><strong>a)</strong> na primeira ocorrência, advertência verbal;</p>
+<p><strong>b)</strong> na segunda ocorrência, advertência escrita e multa no valor equivalente a 100%
+(cem por cento) do valor da taxa cooperativista mensal paga à CooperPalmas.</p>
+<p><strong>c)</strong> na terceira ocorrência, multa no valor equivalente duas vezes o valor da taxa
+cooperativista mensal paga à CooperPalmas até que a infração seja sanada.</p>
+</blockquote>
+<p><strong>II.</strong> nas infrações de natureza grave:</p>
+<blockquote>
+<p><strong>a)</strong> na primeira ocorrência, advertência escrita, com prazo de 30 dias para
+correção da infração;</p>
+<p><strong>b)</strong> na segunda ocorrência, multa no valor equivalente a 100% do valor da taxa
+mensal paga à CooperPalmas;</p>
+<p><strong>c)</strong> na terceira ocorrência, eliminação do(a) cooperado(a), mediante o devido
+processo legal.</p>
+</blockquote>
+</blockquote>
+<p><strong>Art. 95</strong> Constituem infrações de natureza ambiental, no âmbito da CooperPalmas, as ações
+e as omissões dos(as) cooperados(as), com diferentes gradações, que consistam em:</p>
+<blockquote>
+<p><strong>I.</strong> Infrações de natureza grave:</p>
+<blockquote>
+<p><strong>a</strong>) negligenciar de qualquer maneira os cuidados com as áreas de que tem
+posse, inclusive com depósitos, caixas d’água, rede elétrica, equipamentos e
+construções;</p>
+<p><strong>b)</strong> deixar de realizar a poda de cerca viva, prejudicando os terrenos vizinhos;
+aprovado.</p>
+<p><strong>c)</strong> desrespeitar o disposto no Capítulo III do Título III do presente Regimento
+Interno e demais normativos referentes ao uso de água na CooperPalmas;</p>
+<p><strong>d)</strong> desrespeitar o disposto no Capítulo IV do Título III deste Regimento Interno,
+exceto o Art. 91, e demais normativos referentes às normas agroambientais da
+CooperPalmas.</p>
+<p><strong>e)</strong> Deixar de realizar o aceiro nos lotes individuais desocupados colocando em
+risco as unidades vizinhas</p>
+</blockquote>
+<p><strong>II.</strong> Infrações de natureza gravíssima:</p>
+<blockquote>
+<p><strong>a)</strong> guardar ou fazer uso inadequado de produtos considerados tóxicos,
+inflamáveis, explosivos que possam causar danos ou colocar em risco a vida das
+pessoas e a integridade do meio ambiente na CooperPalmas;</p>
+<p><strong>b)</strong> manter nas respectivas unidades autônomas, substâncias, instalações
+ou aparelhos que, por sua natureza ou quantidade, possam causar perigo à
+segurança de pessoas e da propriedade; ao meio ambiente; ou ainda incômodos
+os(as) vizinhos(as);</p>
+<p><strong>c)</strong> promover caça, captura ou transporte de pássaros e outros animais silvestres
+na área da CooperPalmas;</p>
+<p><strong>d)</strong> praticar atos de abuso, maus-tratos, ferir ou mutilar animais silvestres,
+domésticos ou domesticados;</p>
+<p><strong>e)</strong> agir de qualquer maneira a prejudicar o meio ambiente conforme previsto na
+Lei de Crimes Ambientais;</p>
+<p><strong>f)</strong> Desrespeitar o disposto no Artigo 91 deste Regimento Interno.</p>
+</blockquote>
+</blockquote>
+<p><strong>Art. 96</strong> Às infrações ambientais caberão as seguintes penalidades:</p>
+<blockquote>
+<p><strong>I.</strong> Nas infrações de natureza grave:</p>
+<blockquote>
+<p><strong>a)</strong> Advertência escrita com prazo de 30 dias para correção da infração;</p>
+<p><strong>b)</strong> em caso de reincidência, suspensão dos direitos de cooperado(a), pelo prazo
+de 60 dias, com multa no valor equivalente a 100% da taxa cooperativista mensal
+paga à CooperPalmas;</p>
+<p><strong>c)</strong> no caso de uma terceira ocorrência, apreensão, correção, limpeza ou qualquer
+outra ação necessária para corrigir a infração, às expensas do(a) cooperado(a),
+acumulada com multa no valor equivalente a duas vezes a taxa cooperativista
+mensal paga à CooperPalmas, aplicada a cada reincidência em infração já
+notificada anteriormente.</p>
+</blockquote>
+<p><strong>II.</strong> Nas infrações de natureza gravíssima:</p>
+<blockquote>
+<p><strong>a)</strong> Advertência escrita com prazo de 30 dias para correção imediata da infração;</p>
+<p><strong>b)</strong> em caso de reincidência, suspensão dos direitos de cooperado(a), pelo prazo
+de 90 dias, com multa equivalente a duas vezes o valor da taxa mensal paga à
+CooperPalmas;</p>
+<p><strong>c)</strong> no caso de uma terceira ocorrência, o(a) cooperado(a) será eliminado(a)
+da CooperPalmas, mediante devido processo legal, descrito neste Regimento
+Interno.</p>
+</blockquote>
+</blockquote>
+<p><strong>Art. 97</strong> Sem prejuízo do disposto neste Regimento, o Conselho de Administração priorizará
+a conciliação e o ajustamento de conduta, em caso de conflitos entre cooperados, podendo
+acionar o Conselho de Ética para realizar o processo de mediação.
+Parágrafo único. No caso de ocorrências não amparadas por este regimento,
+o Conselho de Administração acionará o Conselho de Ética para, em conjunto,
+determinar as medidas a serem adotadas para o caso concreto.</p>
+<p><strong>Art. 98</strong> O Conselho de Ética será notificado pelo Conselho de Administração em todas
+as ocorrências e deverá atuar, junto ao cooperado e à comunidade, quando for caso, a
+fim de estabelecer a cultura de respeito ao meio ambiente e à pessoa humana no âmbito
+da CooperPalmas, ainda que outras pessoas tenham sido designadas pelo Conselho de
+Administração para tratar dos casos.</p>
+<p><strong>Art.99</strong> Se as infrações gerarem prejuízo a algum(a) cooperado(a) ou à CooperPalmas,
+ficará o(a) infrator(a) obrigado(a) a ressarcir o dano causado.</p>
+<p><strong>Art. 100</strong> Cabe aos(às) cooperados(as), em atenção aos objetivos da CooperPalmas, a
+preservação da natureza, para a presente e as futuras gerações, motivo pelo qual cada
+um deve agir em prol de um meio ambiente equilibrado, com base nas agendas de
+sustentabilidade local, regional, nacional e mundial.</p>
+<br><br>
+<h3 id="t-tulo-v-disposi-es-transit-rias"><center>TÍTULO V</center></h3>
+<h3 id="t-tulo-v-disposi-es-transit-rias"><center>DISPOSIÇÕES TRANSITÓRIAS</center></h3>
+<br><br>
+<p><strong>Art. 101</strong> Os(As) antigos(as) cooperados(as) da Coohaj Seccional Lago Oeste, que mantém
+vínculo com o Palmas do Lago Oeste, deverão formalizar a adesão à CooperPalmas,
+assinando os documentos descritos nos Artigos 6o e 7o do Estatuto Social.</p>
+<blockquote>
+<p><strong>§ 1º</strong> O(A) cooperado(a) que não comparecer espontaneamente para formalizar
+a documentação e assinar a adesão à CooperPalmas, no prazo de 30 dias após a
+aprovação deste regimento interno, será notificado(a), por meio de carta simples,
+com prazo de quinze dias para manifestação / comparecimento.</p>
+<p><strong>§ 2º</strong> Não comparecendo depois de vencido o prazo de quinze dias, o(a) cooperado(a)
+será notificado(a) extrajudicialmente, por meio do cartório de títulos e documentos,
+com novo prazo de cinco dias.</p>
+<p><strong>§ 3º</strong> Reiterado o não comparecimento, a pasta do(a) cooperado(a) será encaminhada
+para adoção das providências judiciais cabíveis, inclusive sua exclusão por
+inadimplência das obrigações estatutárias.</p>
+</blockquote>
+<p><strong>Art. 102</strong> A CooperPalmas contratará consultoria especializada para elaborar o Plano de
+Ocupação do Palmas do Lago Oeste que subsidiará o processo de licenciamento ambiental
+e regularização fundiária das chácaras administradas pela CooperPalmas.</p>
+<blockquote>
+<p><strong>§ 1º.</strong> O Plano de Ocupação deverá conter gabarito para a instalação de pontos de apoio
+nos lotes que ainda não possuem edificações, de modo a proporcionar e garantir o
+usufruto e o desenvolvimento de atividades rurais de todos(as) cooperados(as).</p>
+<p><strong>§ 2º.</strong> O gabarito dos pontos de apoio observará os limites das taxas de
+impermeabilização do solo e o mínimo impacto ambiental na escolha dos materiais
+a serem utilizados.</p>
+</blockquote>
+<p><strong>Art. 103</strong> Este Regimento Interno será revisado em 24 meses por iniciativa do Conselho de
+Administração ou no prazo mínimo de 12 meses, se solicitada por qualquer cooperado,
+atendidas as seguintes condições:</p>
+<blockquote>
+<p><strong>       § 1º</strong> Respeitado o prazo acima, qualquer cooperado poderá solicitar a revisão do
+Regimento Interno ao Conselho de Administração desde que o pedido seja subscrito
+por pelo menos 10% dos cooperados.</p>
+<p><strong>       § 2º</strong> A alteração do Regimento Interno só será realizada com quórum superior ao
+da Assembleia Geral que o criou, ou seja, com 42 cooperados assinantes da lista de
+presença.</p>
+</blockquote>
+
+
+
+
+<br><br><br><br><br>
+  </main><!-- End #main -->
+
+ 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../templates/assets/js/main.js"></script>
+{% endblock %}
+</body>
+
+  <footer class="bg-light text-center text-lg-start">
+<!-- Copyright -->
+<div class="text-center p-3" style="background-color: rgba(33, 123, 71, 0.8);">
+© 2022 Copyright:
+<a class="text-dark" href="">CooperPalmas</a>
+</div>
+</footer>
+</html>
